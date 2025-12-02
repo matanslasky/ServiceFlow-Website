@@ -66,7 +66,7 @@ const Navbar = ({ onJoinClick }) => {
         <div className="flex justify-between items-center">
           
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" />
+            <img src="/logo.png" alt="ServiceFlow" className="h-12 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
