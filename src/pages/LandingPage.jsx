@@ -173,16 +173,16 @@ export default function LandingPage() {
       </section>
 
       {/* --- WAITLIST --- */}
-      <section id="waitlist-section" className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-            <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-3xl p-12 text-white shadow-2xl">
-                <h2 className="text-3xl font-bold mb-6">Ready to Scale?</h2>
+      <section id="waitlist-section" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+            <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-2xl p-8 md:p-10 text-white shadow-2xl">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Scale?</h2>
                 {status === 'success' ? (
-                    <div className="bg-white/10 p-8 rounded-xl"><CheckCircle size={48} className="mx-auto mb-4"/>You're on the list!</div>
+                    <div className="bg-white/10 p-6 rounded-xl"><CheckCircle size={40} className="mx-auto mb-4"/>You're on the list!</div>
                 ) : (
-                    <form onSubmit={handleJoinWaitlist} className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
-                        <input type="email" required placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} className="px-6 py-4 rounded-lg text-slate-900 w-full" />
-                        <button type="submit" disabled={status === 'loading'} className="px-8 py-4 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800">{status === 'loading' ? <Loader2 className="animate-spin"/> : 'Get Started'}</button>
+                    <form onSubmit={handleJoinWaitlist} className="flex flex-col sm:flex-row gap-2 justify-center max-w-md mx-auto">
+                        <input type="email" required placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} className="px-4 py-2.5 rounded-lg text-slate-900 w-full text-sm" />
+                        <button type="submit" disabled={status === 'loading'} className="px-5 py-2.5 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 whitespace-nowrap text-sm">{status === 'loading' ? <Loader2 className="animate-spin"/> : 'Get Started'}</button>
                     </form>
                 )}
             </div>
