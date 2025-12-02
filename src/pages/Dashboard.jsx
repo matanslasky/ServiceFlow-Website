@@ -52,7 +52,7 @@ export default function Dashboard() {
     if (error) {
       alert('Error adding client: ' + error.message);
     } else {
-      // REPLACE THESE WITH YOUR KEYS
+      // REPLACE THESE WITH YOUR KEYS IF YOU HAVEN'T ALREADY
       const serviceID = 'YOUR_SERVICE_ID';
       const templateID = 'YOUR_TEMPLATE_ID';
       const publicKey = 'YOUR_PUBLIC_KEY';

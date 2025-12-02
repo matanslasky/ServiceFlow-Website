@@ -67,8 +67,7 @@ const Navbar = ({ onJoinClick }) => {
           
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" onError={(e) => {e.target.style.display='none';}} />
-            {/* Fallback text if logo.png is still moving */}
-            <span className="text-xl font-bold text-slate-900 tracking-tight md:hidden lg:hidden">ServiceFlow</span>
+            <span className="text-xl font-bold text-slate-900 tracking-tight md:hidden">ServiceFlow</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
