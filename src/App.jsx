@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
+
+// Import Pages
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import NotFound from './pages/NotFound'; // Import the new 404 page
+
+// Import Components
 import ProtectedRoute from './components/ProtectedRoute';
 
 // --- Supabase Setup ---
@@ -40,7 +45,7 @@ function AuthListener() {
 export default function App() {
   return (
     <Router>
-      {/* We drop the listener here so it's always watching */}
+      {/* The AuthListener must be inside the Router to work */}
       <AuthListener />
       
       <Routes>
@@ -57,6 +62,9 @@ export default function App() {
             </ProtectedRoute>
           } 
         />
+
+        {/* 404 Catch-All Route (Must be the very last one) */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
