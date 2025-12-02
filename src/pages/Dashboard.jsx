@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, LogOut, Plus, Search, X } from 'lucide-react';
+import { Users, LogOut, Plus, Search, X, Trash2 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 
 // Connect to Database
@@ -29,7 +29,6 @@ export default function Dashboard() {
     }
   };
 
-  // Initial Load
   useEffect(() => {
     const init = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -61,6 +60,37 @@ export default function Dashboard() {
       setNewClientName('');
       setNewClientEmail('');
       fetchClients();
+    }
+  };
+
+  // --- NEW: Delete Client ---
+  const handleDelete = async (id) => {
+    if (!confirm('Are you sure you want to delete this client?')) return;
+
+    const { error } = await supabase
+      .from('clients')
+      .delete()
+      .eq('id', id);
+
+    if (error) alert('Error deleting!');
+    else fetchClients(); // Refresh list
+  };
+
+  // --- NEW: Toggle Status ---
+  const toggleStatus = async (id, currentStatus) => {
+    const newStatus = currentStatus === 'New Lead' ? 'Active Client' : 'New Lead';
+    
+    // Optimistic Update (Update UI immediately before DB confirms)
+    setClients(clients.map(c => c.id === id ? { ...c, status: newStatus } : c));
+
+    const { error } = await supabase
+      .from('clients')
+      .update({ status: newStatus })
+      .eq('id', id);
+
+    if (error) {
+      alert('Error updating status');
+      fetchClients(); // Revert if failed
     }
   };
 
@@ -135,11 +165,25 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      client.status === 'High Priority' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'
+                    {/* CLICKABLE STATUS BADGE */}
+                    <button 
+                      onClick={() => toggleStatus(client.id, client.status)}
+                      className={`px-3 py-1 rounded-full text-xs font-medium border cursor-pointer transition-all ${
+                      client.status === 'Active Client' 
+                        ? 'bg-green-100 text-green-700 border-green-200 hover:bg-green-200' 
+                        : 'bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-200'
                     }`}>
                       {client.status}
-                    </span>
+                    </button>
+                    
+                    {/* DELETE BUTTON */}
+                    <button 
+                      onClick={() => handleDelete(client.id)}
+                      className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
+                      title="Delete Client"
+                    >
+                      <Trash2 size={18} />
+                    </button>
                   </div>
                 </div>
               ))}
