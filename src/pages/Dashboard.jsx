@@ -1,27 +1,83 @@
-import React from 'react';
-import { Users, DollarSign, TrendingUp, Activity, Bell, Search, Menu } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Users, LogOut, Plus, Search, X } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+// Connect to Database
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function Dashboard() {
+  const [user, setUser] = useState(null);
+  const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Form State
+  const [newClientName, setNewClientName] = useState('');
+  const [newClientEmail, setNewClientEmail] = useState('');
+
+  // Fetch Data Function (Reusable)
+  const fetchClients = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data } = await supabase
+        .from('clients')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (data) setClients(data);
+    }
+  };
+
+  // Initial Load
+  useEffect(() => {
+    const init = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+      if (user) await fetchClients();
+      setLoading(false);
+    };
+    init();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
+
+  const handleAddClient = async (e) => {
+    e.preventDefault();
+    if (!newClientName) return;
+
+    // Save to Supabase
+    const { error } = await supabase
+      .from('clients')
+      .insert([{ name: newClientName, email: newClientEmail }]);
+
+    if (error) {
+      alert('Error adding client: ' + error.message);
+    } else {
+      // Success: Close modal, clear form, refresh list
+      setIsModalOpen(false);
+      setNewClientName('');
+      setNewClientEmail('');
+      fetchClients();
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Top Navigation Bar */}
+    <div className="min-h-screen bg-slate-50 relative">
+      {/* Top Nav */}
       <div className="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center sticky top-0 z-10">
         <div className="font-bold text-xl text-slate-900 flex items-center gap-2">
           <div className="bg-teal-600 w-8 h-8 rounded-lg flex items-center justify-center text-white">S</div>
           ServiceFlow
         </div>
         <div className="flex items-center gap-6">
-          <div className="relative hidden md:block">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-            <input 
-              type="text" 
-              placeholder="Search clients..." 
-              className="pl-10 pr-4 py-2 bg-slate-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 w-64" 
-            />
-          </div>
-          <Bell className="text-slate-500 hover:text-slate-700 cursor-pointer" size={20} />
+          <button onClick={handleLogout} className="text-slate-500 hover:text-red-600 flex items-center gap-1 text-sm font-medium">
+            <LogOut size={18} /> Sign Out
+          </button>
           <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-teal-700 font-bold text-sm">
-            JD
+            {user?.email?.[0].toUpperCase() || 'U'}
           </div>
         </div>
       </div>
@@ -30,78 +86,119 @@ export default function Dashboard() {
         <div className="flex justify-between items-end mb-8">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
-            <p className="text-slate-500 mt-1">Welcome back, John. Here is what's happening today.</p>
+            <p className="text-slate-500 mt-1">Manage your client relationships.</p>
           </div>
-          <button className="bg-slate-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-colors">
-            + New Client
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-slate-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center gap-2"
+          >
+            <Plus size={18} /> New Client
           </button>
         </div>
         
-        {/* Stats Grid */}
+        {/* Stats Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-slate-100 flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-              <Users size={24} />
-            </div>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex items-center gap-4">
+            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Users size={24} /></div>
             <div>
               <p className="text-slate-500 text-sm font-medium">Total Clients</p>
-              <p className="text-2xl font-bold text-slate-900">1,234</p>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-slate-100 flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600">
-              <DollarSign size={24} />
-            </div>
-            <div>
-              <p className="text-slate-500 text-sm font-medium">Revenue (Mo)</p>
-              <p className="text-2xl font-bold text-slate-900">$12,450</p>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-slate-100 flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center text-purple-600">
-              <TrendingUp size={24} />
-            </div>
-            <div>
-              <p className="text-slate-500 text-sm font-medium">Growth</p>
-              <p className="text-2xl font-bold text-slate-900">+15.3%</p>
+              <p className="text-2xl font-bold text-slate-900">{clients.length}</p>
             </div>
           </div>
         </div>
 
-        {/* Content Area */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <Activity size={18} className="text-teal-600" />
-              Recent Activity
-            </h3>
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="flex items-center justify-between py-3 border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors px-2 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-teal-500"></div>
+        {/* Client List Table */}
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+            <h3 className="font-bold text-slate-900">Your Clients</h3>
+            <span className="text-xs text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Live Data</span>
+          </div>
+          
+          {loading ? (
+            <div className="p-8 text-center text-slate-500">Loading your data...</div>
+          ) : clients.length === 0 ? (
+            <div className="p-12 text-center text-slate-400">
+              <Users size={48} className="mx-auto mb-4 opacity-20" />
+              <p>No clients found. Add your first one!</p>
+            </div>
+          ) : (
+            <div className="divide-y divide-slate-100">
+              {clients.map((client) => (
+                <div key={client.id} className="p-4 px-6 flex items-center justify-between hover:bg-slate-50 transition-colors group">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
+                      {client.name[0]}
+                    </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-900">New inquiry from Sarah M.</p>
-                      <p className="text-xs text-slate-400">2 minutes ago</p>
+                      <p className="font-medium text-slate-900">{client.name}</p>
+                      <p className="text-sm text-slate-500">{client.email}</p>
                     </div>
                   </div>
-                  <button className="text-xs text-teal-600 font-bold hover:underline">View</button>
+                  <div className="flex items-center gap-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      client.status === 'High Priority' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'
+                    }`}>
+                      {client.status}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="bg-teal-900 rounded-xl p-6 text-white flex flex-col justify-between">
-            <div>
-              <h3 className="font-bold text-lg mb-2">Pro Plan</h3>
-              <p className="text-teal-200 text-sm mb-6">You are currently on the professional tier. Your next billing date is Dec 1st.</p>
-            </div>
-            <button className="bg-white text-teal-900 py-2 px-4 rounded-lg text-sm font-bold w-full hover:bg-teal-50 transition-colors">
-              Manage Subscription
-            </button>
-          </div>
+          )}
         </div>
       </div>
+
+      {/* MODAL POPUP */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200">
+            <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+              <h3 className="font-bold text-slate-900">Add New Client</h3>
+              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>
+            </div>
+            
+            <form onSubmit={handleAddClient} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                <input 
+                  autoFocus
+                  required
+                  type="text" 
+                  placeholder="e.g. Acme Corp"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+                  value={newClientName}
+                  onChange={(e) => setNewClientName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                <input 
+                  type="email" 
+                  placeholder="contact@example.com"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+                  value={newClientEmail}
+                  onChange={(e) => setNewClientEmail(e.target.value)}
+                />
+              </div>
+              <div className="pt-4 flex justify-end gap-3">
+                <button 
+                  type="button" 
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg font-medium"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800"
+                >
+                  Save Client
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
