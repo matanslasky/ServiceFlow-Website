@@ -66,8 +66,7 @@ const Navbar = ({ onJoinClick }) => {
         <div className="flex justify-between items-center">
           
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" onError={(e) => {e.target.style.display='none';}} />
-            <span className="text-xl font-bold text-slate-900 tracking-tight md:hidden">ServiceFlow</span>
+            <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

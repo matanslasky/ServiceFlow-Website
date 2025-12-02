@@ -95,8 +95,7 @@ export default function Dashboard() {
         
         {/* LOGO */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" onError={(e) => {e.target.style.display='none';}} />
-          <span className="font-bold text-xl text-slate-900 md:hidden lg:hidden">ServiceFlow</span>
+          <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" />
         </div>
 
         <div className="flex items-center gap-6">
