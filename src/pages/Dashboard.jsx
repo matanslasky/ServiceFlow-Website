@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Users, LogOut, Plus, Search, X, Trash2 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
+import emailjs from '@emailjs/browser';
 
 // Connect to Database
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -43,11 +44,12 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
+  // --- FEATURE: Add Client & Send Email ---
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (!newClientName) return;
 
-    // Save to Supabase
+    // 1. Save to Supabase
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
@@ -55,7 +57,22 @@ export default function Dashboard() {
     if (error) {
       alert('Error adding client: ' + error.message);
     } else {
-      // Success: Close modal, clear form, refresh list
+      
+      // 2. Send Welcome Email via EmailJS
+      // (Did you paste your keys here yet? Check these lines!)
+      const serviceID = 'YOUR_SERVICE_ID';
+      const templateID = 'YOUR_TEMPLATE_ID';
+      const publicKey = 'YOUR_PUBLIC_KEY';
+
+      const emailParams = {
+        to_name: newClientName,
+        to_email: newClientEmail,
+      };
+
+      emailjs.send(serviceID, templateID, emailParams, publicKey)
+        .then(() => console.log("Email sent!"), (err) => console.error("Email failed:", err));
+
+      // 3. Reset UI
       setIsModalOpen(false);
       setNewClientName('');
       setNewClientEmail('');
@@ -63,7 +80,7 @@ export default function Dashboard() {
     }
   };
 
-  // --- NEW: Delete Client ---
+  // --- FEATURE: Delete Client ---
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this client?')) return;
 
@@ -73,14 +90,12 @@ export default function Dashboard() {
       .eq('id', id);
 
     if (error) alert('Error deleting!');
-    else fetchClients(); // Refresh list
+    else fetchClients(); 
   };
 
-  // --- NEW: Toggle Status ---
+  // --- FEATURE: Toggle Status ---
   const toggleStatus = async (id, currentStatus) => {
     const newStatus = currentStatus === 'New Lead' ? 'Active Client' : 'New Lead';
-    
-    // Optimistic Update (Update UI immediately before DB confirms)
     setClients(clients.map(c => c.id === id ? { ...c, status: newStatus } : c));
 
     const { error } = await supabase
@@ -90,7 +105,7 @@ export default function Dashboard() {
 
     if (error) {
       alert('Error updating status');
-      fetchClients(); // Revert if failed
+      fetchClients();
     }
   };
 
@@ -98,10 +113,12 @@ export default function Dashboard() {
     <div className="min-h-screen bg-slate-50 relative">
       {/* Top Nav */}
       <div className="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center sticky top-0 z-10">
-        <div className="font-bold text-xl text-slate-900 flex items-center gap-2">
-          <div className="bg-teal-600 w-8 h-8 rounded-lg flex items-center justify-center text-white">S</div>
-          ServiceFlow
+        
+        {/* FEATURE: The New Logo Image */}
+        <div className="flex items-center gap-2">
+          <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" />
         </div>
+
         <div className="flex items-center gap-6">
           <button onClick={handleLogout} className="text-slate-500 hover:text-red-600 flex items-center gap-1 text-sm font-medium">
             <LogOut size={18} /> Sign Out
@@ -165,7 +182,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    {/* CLICKABLE STATUS BADGE */}
+                    {/* FEATURE: Toggle Status Badge */}
                     <button 
                       onClick={() => toggleStatus(client.id, client.status)}
                       className={`px-3 py-1 rounded-full text-xs font-medium border cursor-pointer transition-all ${
@@ -176,7 +193,7 @@ export default function Dashboard() {
                       {client.status}
                     </button>
                     
-                    {/* DELETE BUTTON */}
+                    {/* FEATURE: Delete Button */}
                     <button 
                       onClick={() => handleDelete(client.id)}
                       className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
