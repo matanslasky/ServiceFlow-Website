@@ -95,7 +95,7 @@ export default function Dashboard() {
         
         {/* LOGO */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="ServiceFlow" className="h-16 w-auto" />
+          <img src="/logo.png" alt="ServiceFlow" className="h-24 w-auto" />
         </div>
 
         <div className="flex items-center gap-6">
