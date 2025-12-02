@@ -5,12 +5,10 @@ import {
 import { createClient } from '@supabase/supabase-js';
 import { Link } from 'react-router-dom';
 
-// --- Supabase Setup ---
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// --- Components ---
 const Button = ({ children, variant = 'primary', className = '', icon: Icon, disabled, ...props }) => {
   const baseStyle = "px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2";
   const variants = {
@@ -66,13 +64,15 @@ const Navbar = ({ onJoinClick }) => {
     <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/95 backdrop-blur-md border-slate-200 py-3' : 'bg-transparent border-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-slate-900 text-white p-2 rounded-lg"><Bot size={20} /></div>
-            <span className="text-xl font-bold text-slate-900 tracking-tight">ServiceFlow</span>
-          </div>
+          
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" onError={(e) => {e.target.style.display='none';}} />
+            {/* Fallback text if logo.png is still moving */}
+            <span className="text-xl font-bold text-slate-900 tracking-tight md:hidden lg:hidden">ServiceFlow</span>
+          </Link>
+
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Features</a>
-            {/* LINK TO LOGIN PAGE */}
             <Link to="/login" className="text-sm font-medium text-slate-900 hover:text-teal-600">Sign In</Link>
             <Button variant="primary" className="py-2.5 px-5" onClick={onJoinClick}>Get Started</Button>
           </div>

@@ -3,7 +3,6 @@ import { Users, LogOut, Plus, Search, X, Trash2 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 
-// Connect to Database
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -14,11 +13,9 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Form State
   const [newClientName, setNewClientName] = useState('');
   const [newClientEmail, setNewClientEmail] = useState('');
 
-  // Fetch Data Function (Reusable)
   const fetchClients = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
@@ -44,12 +41,10 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
-  // --- FEATURE: Add Client & Send Email ---
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (!newClientName) return;
 
-    // 1. Save to Supabase
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
@@ -57,9 +52,7 @@ export default function Dashboard() {
     if (error) {
       alert('Error adding client: ' + error.message);
     } else {
-      
-      // 2. Send Welcome Email via EmailJS
-      // (Did you paste your keys here yet? Check these lines!)
+      // REPLACE THESE WITH YOUR KEYS
       const serviceID = 'YOUR_SERVICE_ID';
       const templateID = 'YOUR_TEMPLATE_ID';
       const publicKey = 'YOUR_PUBLIC_KEY';
@@ -72,7 +65,6 @@ export default function Dashboard() {
       emailjs.send(serviceID, templateID, emailParams, publicKey)
         .then(() => console.log("Email sent!"), (err) => console.error("Email failed:", err));
 
-      // 3. Reset UI
       setIsModalOpen(false);
       setNewClientName('');
       setNewClientEmail('');
@@ -80,29 +72,17 @@ export default function Dashboard() {
     }
   };
 
-  // --- FEATURE: Delete Client ---
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this client?')) return;
-
-    const { error } = await supabase
-      .from('clients')
-      .delete()
-      .eq('id', id);
-
+    const { error } = await supabase.from('clients').delete().eq('id', id);
     if (error) alert('Error deleting!');
     else fetchClients(); 
   };
 
-  // --- FEATURE: Toggle Status ---
   const toggleStatus = async (id, currentStatus) => {
     const newStatus = currentStatus === 'New Lead' ? 'Active Client' : 'New Lead';
     setClients(clients.map(c => c.id === id ? { ...c, status: newStatus } : c));
-
-    const { error } = await supabase
-      .from('clients')
-      .update({ status: newStatus })
-      .eq('id', id);
-
+    const { error } = await supabase.from('clients').update({ status: newStatus }).eq('id', id);
     if (error) {
       alert('Error updating status');
       fetchClients();
@@ -111,12 +91,12 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 relative">
-      {/* Top Nav */}
       <div className="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center sticky top-0 z-10">
         
-        {/* FEATURE: The New Logo Image */}
+        {/* LOGO */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" />
+          <img src="/logo.png" alt="ServiceFlow" className="h-8 w-auto" onError={(e) => {e.target.style.display='none';}} />
+          <span className="font-bold text-xl text-slate-900 md:hidden lg:hidden">ServiceFlow</span>
         </div>
 
         <div className="flex items-center gap-6">
@@ -143,7 +123,6 @@ export default function Dashboard() {
           </button>
         </div>
         
-        {/* Stats Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex items-center gap-4">
             <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Users size={24} /></div>
@@ -154,7 +133,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Client List Table */}
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
             <h3 className="font-bold text-slate-900">Your Clients</h3>
@@ -162,7 +140,7 @@ export default function Dashboard() {
           </div>
           
           {loading ? (
-            <div className="p-8 text-center text-slate-500">Loading your data...</div>
+            <div className="p-8 text-center text-slate-500">Loading...</div>
           ) : clients.length === 0 ? (
             <div className="p-12 text-center text-slate-400">
               <Users size={48} className="mx-auto mb-4 opacity-20" />
@@ -182,7 +160,6 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    {/* FEATURE: Toggle Status Badge */}
                     <button 
                       onClick={() => toggleStatus(client.id, client.status)}
                       className={`px-3 py-1 rounded-full text-xs font-medium border cursor-pointer transition-all ${
@@ -193,7 +170,6 @@ export default function Dashboard() {
                       {client.status}
                     </button>
                     
-                    {/* FEATURE: Delete Button */}
                     <button 
                       onClick={() => handleDelete(client.id)}
                       className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
@@ -209,7 +185,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* MODAL POPUP */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200">
