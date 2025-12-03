@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai"; // Import kept for future
 
 // Connect to Database
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Initialize Gemini AI (Safely)
+// --- AI SETUP (Safe Mode) ---
+// We check if the key exists. If not, genAI is null (doesn't crash).
 const geminiKey = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = geminiKey ? new GoogleGenerativeAI(geminiKey) : null;
 
@@ -54,43 +55,47 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
-  // --- ADD CLIENT & SEND EMAIL ---
+  // --- DETECTIVE VERSION: Add Client ---
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (!newClientName) return;
 
-    // 1. Save to Database
+    // 1. Save to Database (This works, right?)
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
 
     if (error) {
-      alert('Error: ' + error.message);
+      alert('Database Error: ' + error.message);
     } else {
       
-      // 2. Send Email via EmailJS (FIXED: Uses Vercel Keys now)
+      // 2. THE DIAGNOSTIC CHECK
       const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      const templateParams = {
-        to_name: newClientName,
-        to_email: newClientEmail,
-      };
+      // Check exactly which one is missing
+      let missing = [];
+      if (!serviceID) missing.push("SERVICE_ID");
+      if (!templateID) missing.push("TEMPLATE_ID");
+      if (!publicKey) missing.push("PUBLIC_KEY");
 
-      if (serviceID && templateID && publicKey) {
-        emailjs.send(serviceID, templateID, templateParams, publicKey)
-          .then(() => {
-            console.log("Welcome email sent successfully!");
-          }, (err) => {
-            console.error("Failed to send email:", err);
-            alert("Client saved, but email failed. Check console for details.");
-          });
+      if (missing.length > 0) {
+        alert(`❌ Vercel configuration error! Missing keys: ${missing.join(", ")}\n\nPlease go to Vercel Settings > Environment Variables and check these specific names.`);
+        console.error("Missing keys:", missing);
       } else {
-        console.error("EmailJS keys are missing in Vercel!");
+        // All keys exist! Try to send.
+        emailjs.send(serviceID, templateID, {
+          to_name: newClientName,
+          to_email: newClientEmail,
+        }, publicKey)
+        .then(() => {
+          alert("✅ Success! Email sent.");
+        }, (err) => {
+          alert(`❌ Keys found, but EmailJS rejected them.\nError: ${JSON.stringify(err)}`);
+        });
       }
-      
-      // 3. Close & Refresh
+
       setIsModalOpen(false);
       setNewClientName('');
       setNewClientEmail('');
@@ -110,12 +115,14 @@ export default function Dashboard() {
     await supabase.from('clients').update({ status: newStatus }).eq('id', id);
   };
 
-  // --- Generate AI Email ---
+  // --- AI LOGIC (Protected) ---
   const generateEmail = async (clientName) => {
+    // Safety Check: If no key, show alert instead of crashing
     if (!genAI) {
-      alert("Gemini API Key is missing!");
+      alert("AI feature is currently disabled (No API Key configured).");
       return;
     }
+
     setAiModalOpen(true);
     setAiLoading(true);
     setAiDraft('');
@@ -216,7 +223,7 @@ export default function Dashboard() {
                       {client.status}
                     </button>
                     
-                    {/* AI Button */}
+                    {/* AI Button (Visible but protected) */}
                     <button 
                       onClick={() => generateEmail(client.name)}
                       className="p-2 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-colors"
