@@ -6,13 +6,14 @@ import { createClient } from '@supabase/supabase-js';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import ClientDetails from './pages/ClientDetails'; // <--- NEW IMPORT
+import ClientDetails from './pages/ClientDetails';
+import Billing from './pages/Billing';
+import Success from './pages/Success';
+import Settings from './pages/Settings'; // <--- NEW IMPORT
 import NotFound from './pages/NotFound';
 
-// Import Components
 import ProtectedRoute from './components/ProtectedRoute';
 
-// --- Supabase Setup ---
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -37,14 +38,13 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         
-        <Route path="/dashboard" element={
-            <ProtectedRoute><Dashboard /></ProtectedRoute>
-        } />
-
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/client/:id" element={<ProtectedRoute><ClientDetails /></ProtectedRoute>} />
+        <Route path="/billing" element={<ProtectedRoute><Billing /></ProtectedRoute>} />
+        <Route path="/success" element={<ProtectedRoute><Success /></ProtectedRoute>} />
+        
         {/* --- NEW ROUTE --- */}
-        <Route path="/client/:id" element={
-            <ProtectedRoute><ClientDetails /></ProtectedRoute>
-        } />
+        <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
