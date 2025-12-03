@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock } from 'lucide-react';
+import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -11,9 +11,9 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Initialize Gemini
-const geminiKey = import.meta.env.VITE_GEMINI_API_KEY;
-const genAI = geminiKey ? new GoogleGenerativeAI(geminiKey) : null;
+// Initialize AI Engine (Generic Name)
+const aiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const aiEngine = aiKey ? new GoogleGenerativeAI(aiKey) : null;
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function Dashboard() {
   
   // Modals
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // NEW
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
   
   // AI State
   const [aiModalOpen, setAiModalOpen] = useState(false);
@@ -64,16 +64,16 @@ export default function Dashboard() {
   const handleAddClient = async (e) => {
     e.preventDefault();
     
-    // 1. CHECK LIMIT: If they have 3 or more clients, stop them.
+    // 1. CHECK LIMIT
     if (clients.length >= 3) {
-      setIsModalOpen(false); // Close the add form
-      setIsUpgradeModalOpen(true); // Open the "Pay Me" modal
+      setIsModalOpen(false); 
+      setIsUpgradeModalOpen(true);
       return;
     }
 
     if (!newClientName) return;
 
-    // 2. If under limit, proceed to save
+    // 2. Save
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
@@ -110,17 +110,26 @@ export default function Dashboard() {
     await supabase.from('clients').update({ status: newStatus }).eq('id', id);
   };
 
+  // --- AI Logic ---
   const generateEmail = async (clientName) => {
-    if (!genAI) { alert("Gemini API Key missing!"); return; }
+    if (!aiEngine) { 
+      alert("AI Service is currently offline (Missing API Key)."); 
+      return; 
+    }
     setAiModalOpen(true);
     setAiLoading(true);
     setAiDraft('');
+    
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-      const result = await model.generateContent(`Write a welcome email for ${clientName}. Keep it under 100 words.`);
-      setAiDraft(await result.response.text());
+      const model = aiEngine.getGenerativeModel({ model: "gemini-pro"});
+      const prompt = `Write a professional, warm, and concise welcome email for a new client named ${clientName}. I am a consultant. The email should propose a time for a kick-off call. Keep it under 100 words.`;
+      
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      setAiDraft(response.text());
     } catch (error) {
-      setAiDraft("Error generating email.");
+      console.error("AI Error:", error);
+      setAiDraft("I'm having trouble connecting to the AI service right now. Please try again later.");
     }
     setAiLoading(false);
   };
@@ -158,10 +167,8 @@ export default function Dashboard() {
             <p className="text-slate-500 mt-1">Manage your client relationships.</p>
           </div>
           
-          {/* ADD CLIENT BUTTON */}
           <button 
             onClick={() => {
-              // Immediate Check on Button Click for better UX
               if (clients.length >= 3) {
                 setIsUpgradeModalOpen(true);
               } else {
@@ -174,6 +181,7 @@ export default function Dashboard() {
           </button>
         </div>
         
+        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6 hover:shadow-md transition-shadow">
             <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Users size={28} /></div>
@@ -184,6 +192,7 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* Client List */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           <div className="px-8 py-5 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
             <h3 className="font-bold text-slate-900 text-lg">Your Clients</h3>
@@ -216,7 +225,10 @@ export default function Dashboard() {
                   </div>
                   <div className="flex items-center gap-4">
                     <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className={`px-4 py-1.5 rounded-full text-xs font-bold border cursor-pointer transition-all ${client.status === 'Active Client' ? 'bg-green-100 text-green-700 border-green-200 hover:bg-green-200' : 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100'}`}>{client.status}</button>
-                    <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all" title="AI Draft"><Sparkles size={20} /></button>
+                    
+                    {/* AI Button */}
+                    <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all" title="Draft Email"><Sparkles size={20} /></button>
+                    
                     <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all" title="Delete"><Trash2 size={20} /></button>
                   </div>
                 </div>
@@ -252,43 +264,68 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* UPGRADE LIMIT MODAL (New!) */}
+      {/* UPGRADE MODAL (Rebranded) */}
       {isUpgradeModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-amber-400">
-            <div className="p-8 text-center">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6 text-amber-600">
-                <Lock size={32} />
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-amber-400 relative">
+            
+            {/* Premium Header */}
+            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 px-8 py-6 border-b border-amber-100 text-center">
+              <div className="w-14 h-14 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30 text-white">
+                <Sparkles size={28} fill="currentColor" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">Limit Reached</h3>
-              <p className="text-slate-500 mb-8">
-                You've reached the limit of 3 clients on the Free Starter plan. Upgrade to Pro to add unlimited clients and unlock AI features.
+              <h3 className="text-2xl font-extrabold text-slate-900">Unlock Pro Power</h3>
+            </div>
+
+            {/* Features List */}
+            <div className="p-8 bg-white">
+              <p className="text-center text-slate-500 mb-6 leading-relaxed">
+                You've hit the 3-client limit. Upgrade now to scale your business without boundaries.
               </p>
-              <div className="space-y-3">
-                <button 
-                  onClick={() => navigate('/billing')}
-                  className="w-full py-3 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition-all shadow-lg hover:shadow-amber-500/30"
-                >
-                  Upgrade Plan
-                </button>
-                <button 
-                  onClick={() => setIsUpgradeModalOpen(false)}
-                  className="w-full py-3 text-slate-400 hover:text-slate-600 font-medium"
-                >
-                  Maybe Later
-                </button>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3 text-slate-700">
+                  <Check className="text-teal-600 shrink-0" size={20} />
+                  <span className="font-medium">Unlimited Clients</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-700">
+                  <Check className="text-teal-600 shrink-0" size={20} />
+                  <span className="font-medium">AI Assistant</span> {/* RENAMED */}
+                </div>
+                <div className="flex items-center gap-3 text-slate-700">
+                  <Check className="text-teal-600 shrink-0" size={20} />
+                  <span className="font-medium">Smart Calendar Sync</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-700">
+                  <Check className="text-teal-600 shrink-0" size={20} />
+                  <span className="font-medium">Priority Support</span>
+                </div>
               </div>
+
+              <button 
+                onClick={() => navigate('/billing')}
+                className="w-full py-3.5 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl active:scale-[0.98] flex items-center justify-center gap-2"
+              >
+                Upgrade for $29/mo <Zap size={18} fill="currentColor" />
+              </button>
+              
+              <button 
+                onClick={() => setIsUpgradeModalOpen(false)}
+                className="w-full mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium"
+              >
+                No thanks, I'll keep it small
+              </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* AI MODAL */}
+      {/* AI Draft Modal */}
       {aiModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in duration-200 border-4 border-purple-50">
             <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-purple-50/50">
-              <h3 className="font-bold text-xl text-purple-900 flex items-center gap-3"><Sparkles size={24} className="text-purple-600"/> AI Email Draft</h3>
+              <h3 className="font-bold text-xl text-purple-900 flex items-center gap-3"><Sparkles size={24} className="text-purple-600"/> AI Assistant</h3> {/* RENAMED */}
               <button onClick={() => setAiModalOpen(false)} className="text-slate-400 hover:text-slate-600"><X size={24} /></button>
             </div>
             <div className="p-8">
