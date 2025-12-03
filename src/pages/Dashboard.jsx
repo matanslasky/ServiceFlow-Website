@@ -55,45 +55,48 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
-  // --- DETECTIVE VERSION: Add Client ---
+  // --- FINAL FIX: Add Client & Send Email ---
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (!newClientName) return;
 
-    // 1. Save to Database (This works, right?)
+    // 1. Save to Database
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
 
     if (error) {
-      alert('Database Error: ' + error.message);
+      alert('Error adding client: ' + error.message);
     } else {
       
-      // 2. THE DIAGNOSTIC CHECK
+      // 2. Load Keys directly from Environment
       const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      // Check exactly which one is missing
-      let missing = [];
-      if (!serviceID) missing.push("SERVICE_ID");
-      if (!templateID) missing.push("TEMPLATE_ID");
-      if (!publicKey) missing.push("PUBLIC_KEY");
+      // 3. Debugging Alert (Delete this later)
+      // This will show you EXACTLY what the code sees.
+      console.log("Service ID:", serviceID); 
+      console.log("Template ID:", templateID);
+      console.log("Public Key:", publicKey);
 
-      if (missing.length > 0) {
-        alert(`❌ Vercel configuration error! Missing keys: ${missing.join(", ")}\n\nPlease go to Vercel Settings > Environment Variables and check these specific names.`);
-        console.error("Missing keys:", missing);
+      if (!serviceID || !templateID || !publicKey) {
+        alert("CRITICAL ERROR: Keys are still undefined.\n\nCheck your Vercel Settings spelling carefully.");
       } else {
-        // All keys exist! Try to send.
-        emailjs.send(serviceID, templateID, {
+        // 4. Send Email
+        const templateParams = {
           to_name: newClientName,
           to_email: newClientEmail,
-        }, publicKey)
-        .then(() => {
-          alert("✅ Success! Email sent.");
-        }, (err) => {
-          alert(`❌ Keys found, but EmailJS rejected them.\nError: ${JSON.stringify(err)}`);
-        });
+        };
+
+        emailjs.send(serviceID, templateID, templateParams, publicKey)
+          .then(() => {
+            console.log("SUCCESS! Email sent.");
+            alert("Email Sent!"); // Temporary alert to confirm success
+          }, (err) => {
+            console.error("FAILED:", err);
+            alert("EmailJS Failed: " + JSON.stringify(err));
+          });
       }
 
       setIsModalOpen(false);
