@@ -11,7 +11,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Initialize AI Engine (Generic Name)
+// Initialize AI (Generic Name)
 const aiKey = import.meta.env.VITE_GEMINI_API_KEY;
 const aiEngine = aiKey ? new GoogleGenerativeAI(aiKey) : null;
 
@@ -67,7 +67,7 @@ export default function Dashboard() {
     // 1. CHECK LIMIT
     if (clients.length >= 3) {
       setIsModalOpen(false); 
-      setIsUpgradeModalOpen(true);
+      setIsUpgradeModalOpen(true); // Trigger the Sales Popup
       return;
     }
 
@@ -167,6 +167,7 @@ export default function Dashboard() {
             <p className="text-slate-500 mt-1">Manage your client relationships.</p>
           </div>
           
+          {/* ADD CLIENT BUTTON */}
           <button 
             onClick={() => {
               if (clients.length >= 3) {
@@ -225,10 +226,7 @@ export default function Dashboard() {
                   </div>
                   <div className="flex items-center gap-4">
                     <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className={`px-4 py-1.5 rounded-full text-xs font-bold border cursor-pointer transition-all ${client.status === 'Active Client' ? 'bg-green-100 text-green-700 border-green-200 hover:bg-green-200' : 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100'}`}>{client.status}</button>
-                    
-                    {/* AI Button */}
-                    <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all" title="Draft Email"><Sparkles size={20} /></button>
-                    
+                    <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all" title="AI Assistant"><Sparkles size={20} /></button>
                     <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all" title="Delete"><Trash2 size={20} /></button>
                   </div>
                 </div>
@@ -264,41 +262,43 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* UPGRADE MODAL (Rebranded) */}
+      {/* NEW: SALES UPGRADE POPUP */}
       {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-amber-400 relative">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-teal-500 relative">
             
-            {/* Premium Header */}
-            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 px-8 py-6 border-b border-amber-100 text-center">
-              <div className="w-14 h-14 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30 text-white">
-                <Sparkles size={28} fill="currentColor" />
-              </div>
-              <h3 className="text-2xl font-extrabold text-slate-900">Unlock Pro Power</h3>
+            <div className="absolute top-0 right-0 bg-teal-500 text-white px-3 py-1 rounded-bl-xl text-xs font-bold uppercase tracking-wider">
+              Recommended
             </div>
 
-            {/* Features List */}
-            <div className="p-8 bg-white">
-              <p className="text-center text-slate-500 mb-6 leading-relaxed">
-                You've hit the 3-client limit. Upgrade now to scale your business without boundaries.
+            <div className="p-8 text-center">
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-6 text-teal-600 shadow-lg shadow-teal-500/20">
+                <Zap size={32} fill="currentColor" />
+              </div>
+              
+              <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Upgrade to Pro</h3>
+              <p className="text-slate-500 mb-8 text-sm leading-relaxed">
+                You've filled your 3 free slots! Unlock the full potential of ServiceFlow to scale your business.
               </p>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-slate-700">
-                  <Check className="text-teal-600 shrink-0" size={20} />
-                  <span className="font-medium">Unlimited Clients</span>
+              <div className="space-y-3 text-left bg-slate-50 p-4 rounded-xl border border-slate-100 mb-8">
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Check className="text-teal-600 shrink-0" size={16} /> <span className="font-semibold">Unlimited Clients</span>
                 </div>
-                <div className="flex items-center gap-3 text-slate-700">
-                  <Check className="text-teal-600 shrink-0" size={20} />
-                  <span className="font-medium">AI Assistant</span> {/* RENAMED */}
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Check className="text-teal-600 shrink-0" size={16} /> <span className="font-semibold">AI Email Assistant</span>
                 </div>
-                <div className="flex items-center gap-3 text-slate-700">
-                  <Check className="text-teal-600 shrink-0" size={20} />
-                  <span className="font-medium">Smart Calendar Sync</span>
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Check className="text-teal-600 shrink-0" size={16} /> <span>Smart Calendar Sync</span>
                 </div>
-                <div className="flex items-center gap-3 text-slate-700">
-                  <Check className="text-teal-600 shrink-0" size={20} />
-                  <span className="font-medium">Priority Support</span>
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Check className="text-teal-600 shrink-0" size={16} /> <span>Automated Invoicing</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Check className="text-teal-600 shrink-0" size={16} /> <span>Client Portal Access</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-700 text-sm">
+                  <Check className="text-teal-600 shrink-0" size={16} /> <span>Priority 24/7 Support</span>
                 </div>
               </div>
 
@@ -306,14 +306,14 @@ export default function Dashboard() {
                 onClick={() => navigate('/billing')}
                 className="w-full py-3.5 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl active:scale-[0.98] flex items-center justify-center gap-2"
               >
-                Upgrade for $29/mo <Zap size={18} fill="currentColor" />
+                Get Pro for $29/mo
               </button>
               
               <button 
                 onClick={() => setIsUpgradeModalOpen(false)}
-                className="w-full mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium"
+                className="w-full mt-4 text-slate-400 hover:text-slate-600 text-xs font-medium uppercase tracking-wide"
               >
-                No thanks, I'll keep it small
+                Maybe Later
               </button>
             </div>
           </div>
@@ -325,7 +325,7 @@ export default function Dashboard() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in duration-200 border-4 border-purple-50">
             <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-purple-50/50">
-              <h3 className="font-bold text-xl text-purple-900 flex items-center gap-3"><Sparkles size={24} className="text-purple-600"/> AI Assistant</h3> {/* RENAMED */}
+              <h3 className="font-bold text-xl text-purple-900 flex items-center gap-3"><Sparkles size={24} className="text-purple-600"/> AI Assistant</h3>
               <button onClick={() => setAiModalOpen(false)} className="text-slate-400 hover:text-slate-600"><X size={24} /></button>
             </div>
             <div className="p-8">
