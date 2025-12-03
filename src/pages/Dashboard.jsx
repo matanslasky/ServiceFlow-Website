@@ -3,7 +3,7 @@ import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check } from 'l
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { useNavigate } from 'react-router-dom'; // NEW IMPORT
+import { useNavigate } from 'react-router-dom';
 
 // Connect to Database
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -15,7 +15,7 @@ const geminiKey = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = geminiKey ? new GoogleGenerativeAI(geminiKey) : null;
 
 export default function Dashboard() {
-  const navigate = useNavigate(); // NEW HOOK
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,10 +56,12 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
+  // --- ADD CLIENT & SEND EMAIL (SECURE) ---
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (!newClientName) return;
 
+    // 1. Save to Database
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
@@ -67,16 +69,30 @@ export default function Dashboard() {
     if (error) {
       alert('Error: ' + error.message);
     } else {
-      // Send Email via EmailJS
+      
+      // 2. Load Keys from Environment Variables (Secure)
       const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (serviceID && templateID && publicKey) {
-        emailjs.send(serviceID, templateID, { to_name: newClientName, to_email: newClientEmail }, publicKey)
-          .then(() => console.log("Email sent!"), (err) => console.error("Email failed:", err));
+        const templateParams = {
+          to_name: newClientName,
+          to_email: newClientEmail,
+        };
+
+        emailjs.send(serviceID, templateID, templateParams, publicKey)
+          .then(() => {
+            console.log("Welcome email sent successfully!");
+          }, (err) => {
+            console.error("Failed to send email:", err);
+            alert("Client saved, but email failed. Check console.");
+          });
+      } else {
+        console.error("EmailJS keys are missing from environment variables!");
       }
       
+      // 3. Reset UI
       setIsModalOpen(false);
       setNewClientName('');
       setNewClientEmail('');
@@ -96,6 +112,7 @@ export default function Dashboard() {
     await supabase.from('clients').update({ status: newStatus }).eq('id', id);
   };
 
+  // --- AI Logic ---
   const generateEmail = async (clientName) => {
     if (!genAI) {
       alert("Gemini API Key is missing!");
@@ -183,7 +200,7 @@ export default function Dashboard() {
               {clients.map((client) => (
                 <div 
                   key={client.id} 
-                  onClick={() => navigate(`/client/${client.id}`)} // NEW: Click to Navigate
+                  onClick={() => navigate(`/client/${client.id}`)}
                   className="p-4 px-6 flex items-center justify-between hover:bg-slate-50 transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center gap-4">
