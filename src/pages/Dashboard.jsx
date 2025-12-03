@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
-import { GoogleGenerativeAI } from "@google/generative-ai"; // Import kept for future
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { useNavigate } from 'react-router-dom'; // NEW IMPORT
 
 // Connect to Database
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// --- AI SETUP (Safe Mode) ---
-// We check if the key exists. If not, genAI is null (doesn't crash).
+// Initialize Gemini AI (Safely)
 const geminiKey = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = geminiKey ? new GoogleGenerativeAI(geminiKey) : null;
 
 export default function Dashboard() {
+  const navigate = useNavigate(); // NEW HOOK
   const [user, setUser] = useState(null);
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,50 +56,27 @@ export default function Dashboard() {
     await supabase.auth.signOut();
   };
 
-  // --- FINAL FIX: Add Client & Send Email ---
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (!newClientName) return;
 
-    // 1. Save to Database
     const { error } = await supabase
       .from('clients')
       .insert([{ name: newClientName, email: newClientEmail }]);
 
     if (error) {
-      alert('Error adding client: ' + error.message);
+      alert('Error: ' + error.message);
     } else {
-      
-      // 2. Load Keys directly from Environment
+      // Send Email via EmailJS
       const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      // 3. Debugging Alert (Delete this later)
-      // This will show you EXACTLY what the code sees.
-      console.log("Service ID:", serviceID); 
-      console.log("Template ID:", templateID);
-      console.log("Public Key:", publicKey);
-
-      if (!serviceID || !templateID || !publicKey) {
-        alert("CRITICAL ERROR: Keys are still undefined.\n\nCheck your Vercel Settings spelling carefully.");
-      } else {
-        // 4. Send Email
-        const templateParams = {
-          to_name: newClientName,
-          to_email: newClientEmail,
-        };
-
-        emailjs.send(serviceID, templateID, templateParams, publicKey)
-          .then(() => {
-            console.log("SUCCESS! Email sent.");
-            alert("Email Sent!"); // Temporary alert to confirm success
-          }, (err) => {
-            console.error("FAILED:", err);
-            alert("EmailJS Failed: " + JSON.stringify(err));
-          });
+      if (serviceID && templateID && publicKey) {
+        emailjs.send(serviceID, templateID, { to_name: newClientName, to_email: newClientEmail }, publicKey)
+          .then(() => console.log("Email sent!"), (err) => console.error("Email failed:", err));
       }
-
+      
       setIsModalOpen(false);
       setNewClientName('');
       setNewClientEmail('');
@@ -118,28 +96,24 @@ export default function Dashboard() {
     await supabase.from('clients').update({ status: newStatus }).eq('id', id);
   };
 
-  // --- AI LOGIC (Protected) ---
   const generateEmail = async (clientName) => {
-    // Safety Check: If no key, show alert instead of crashing
     if (!genAI) {
-      alert("AI feature is currently disabled (No API Key configured).");
+      alert("Gemini API Key is missing!");
       return;
     }
-
     setAiModalOpen(true);
     setAiLoading(true);
     setAiDraft('');
     
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-      const prompt = `Write a professional, warm, and concise welcome email for a new client named ${clientName}. I am a consultant. The email should propose a time for a kick-off call. Keep it under 100 words.`;
-      
+      const prompt = `Write a professional welcome email for ${clientName}. Keep it under 100 words.`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
       setAiDraft(response.text());
     } catch (error) {
       console.error(error);
-      setAiDraft("Error generating email. Please check your API key.");
+      setAiDraft("Error generating email.");
     }
     setAiLoading(false);
   };
@@ -207,7 +181,11 @@ export default function Dashboard() {
           ) : (
             <div className="divide-y divide-slate-100">
               {clients.map((client) => (
-                <div key={client.id} className="p-4 px-6 flex items-center justify-between hover:bg-slate-50 transition-colors group">
+                <div 
+                  key={client.id} 
+                  onClick={() => navigate(`/client/${client.id}`)} // NEW: Click to Navigate
+                  className="p-4 px-6 flex items-center justify-between hover:bg-slate-50 transition-colors group cursor-pointer"
+                >
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
                       {client.name[0]}
@@ -219,23 +197,26 @@ export default function Dashboard() {
                   </div>
                   <div className="flex items-center gap-3">
                     <button 
-                      onClick={() => toggleStatus(client.id, client.status)}
+                      onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }}
                       className={`px-3 py-1 rounded-full text-xs font-medium border cursor-pointer transition-all ${
                       client.status === 'Active Client' ? 'bg-green-100 text-green-700 border-green-200' : 'bg-blue-100 text-blue-700 border-blue-200'
                     }`}>
                       {client.status}
                     </button>
                     
-                    {/* AI Button (Visible but protected) */}
+                    {/* AI Button */}
                     <button 
-                      onClick={() => generateEmail(client.name)}
+                      onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }}
                       className="p-2 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-colors"
                       title="Generate AI Email"
                     >
                       <Sparkles size={18} />
                     </button>
 
-                    <button onClick={() => handleDelete(client.id)} className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} 
+                      className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
+                    >
                       <Trash2 size={18} />
                     </button>
                   </div>
