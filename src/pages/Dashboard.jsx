@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Clock, Activity, Mail } from 'lucide-react';
+import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Mail, ChevronRight } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -33,6 +33,7 @@ export default function Dashboard() {
   const [newClientName, setNewClientName] = useState('');
   const [newClientEmail, setNewClientEmail] = useState('');
 
+  // Replace with your real link
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
 
   const fetchClients = async () => {
@@ -73,7 +74,13 @@ export default function Dashboard() {
 
   const handleAddClient = async (e) => {
     e.preventDefault();
-    if (clients.length >= 3) { setIsModalOpen(false); setIsUpgradeModalOpen(true); return; }
+    // LIMIT CHECK (3 Clients Max for Free)
+    if (clients.length >= 3) { 
+      setIsModalOpen(false); 
+      setIsUpgradeModalOpen(true); // Show pricing tiers
+      return; 
+    }
+
     if (!newClientName) return;
 
     const { error } = await supabase.from('clients').insert([{ name: newClientName, email: newClientEmail }]);
@@ -148,6 +155,12 @@ export default function Dashboard() {
     client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // REAL DATA ONLY: If database has no follow_up dates, this list is empty.
+  const upcomingTasks = clients
+    .filter(c => c.next_follow_up)
+    .sort((a, b) => new Date(a.next_follow_up) - new Date(b.next_follow_up))
+    .slice(0, 3);
+
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">Error: {error}</div>;
 
   return (
@@ -167,110 +180,127 @@ export default function Dashboard() {
       <div className="p-6 md:p-10 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Agent Command Center</h1>
-            <p className="text-slate-500 mt-1 text-sm md:text-base">Live monitoring of your AI workforce.</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Dashboard</h1>
+            <p className="text-slate-500 mt-1 text-sm md:text-base">Manage your clients and monitor agent activity.</p>
           </div>
           
           <div className="flex gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-               <input type="text" placeholder="Search logs..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+               <input type="text" placeholder="Search..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             </div>
             <button onClick={handleExportCSV} className="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center" title="Export CSV"><Download size={20} /></button>
             <button onClick={() => setIsAgentConfigOpen(true)} className="bg-white border border-slate-200 text-teal-600 px-4 py-3 rounded-xl font-bold hover:bg-teal-50 transition-all shadow-sm flex items-center justify-center gap-2" title="Configure Agent"><Settings size={20} /></button>
+            
+            {/* Renamed Button */}
             <button onClick={() => { if (clients.length >= 3) setIsUpgradeModalOpen(true); else setIsModalOpen(true); }} className="bg-slate-900 text-white px-4 md:px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap">
-              <Plus size={20} /> <span className="hidden md:inline">Manual Entry</span>
+              <Plus size={20} /> <span className="hidden md:inline">Add Client</span>
             </button>
           </div>
         </div>
-
-        {/* NEW: ANALYTICS WIDGETS */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-2">
-             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2"><Activity size={14}/> Triage Rate</span>
-             <span className="text-3xl font-extrabold text-slate-900">94%</span>
-             <span className="text-xs text-green-600 font-medium">+2.4% this week</span>
-           </div>
-           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-2">
-             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2"><Clock size={14}/> Time Saved</span>
-             <span className="text-3xl font-extrabold text-slate-900">12h</span>
-             <span className="text-xs text-slate-500 font-medium">Est. manual work</span>
-           </div>
-           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-2">
-             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2"><Mail size={14}/> Emails Drafted</span>
-             <span className="text-3xl font-extrabold text-slate-900">142</span>
-             <span className="text-xs text-slate-500 font-medium">Last 30 days</span>
-           </div>
-           <div className="bg-teal-900 p-6 rounded-2xl shadow-lg border border-teal-800 flex flex-col gap-2 text-white relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-20 h-20 bg-teal-500 rounded-full blur-3xl opacity-20"></div>
-             <span className="text-xs font-bold text-teal-200 uppercase tracking-wider flex items-center gap-2"><Zap size={14}/> Active Agents</span>
-             <span className="text-3xl font-extrabold">3</span>
-             <span className="text-xs text-teal-200 font-medium">System Healthy</span>
-           </div>
+        
+        {/* REAL STATS ONLY */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6">
+            <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Users size={28} /></div>
+            <div>
+              <p className="text-slate-500 text-sm font-medium uppercase tracking-wide">Total Clients</p>
+              <p className="text-3xl font-bold text-slate-900">{clients.length} <span className="text-sm text-slate-400 font-normal">/ 3 Free</span></p>
+            </div>
+          </div>
+          
+          {/* Upcoming Tasks (Real DB Data) */}
+          <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+             <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2"><Calendar size={20} className="text-teal-600"/> Next Follow-ups</h3>
+             {upcomingTasks.length === 0 ? (
+               <p className="text-slate-400 text-sm italic">No scheduled follow-ups found in database.</p>
+             ) : (
+               <div className="grid md:grid-cols-3 gap-4">
+                 {upcomingTasks.map(task => (
+                   <div key={task.id} onClick={() => navigate(`/client/${task.id}`)} className="bg-slate-50 p-3 rounded-xl border border-slate-200 hover:border-teal-300 cursor-pointer transition-all">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">{new Date(task.next_follow_up).toLocaleDateString()}</span>
+                        <ChevronRight size={14} className="text-slate-400"/>
+                      </div>
+                      <p className="font-bold text-slate-700 text-sm truncate">{task.name}</p>
+                   </div>
+                 ))}
+               </div>
+             )}
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-            {/* Client List (Premium List View Restored) */}
-            <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-              <div className="px-6 py-5 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
-                <h3 className="font-bold text-slate-900">Monitored Contacts</h3>
-                <span className="text-xs font-bold text-teal-700 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full">Live</span>
-              </div>
-              
-              {loading ? <div className="p-12 text-center text-slate-500">Loading...</div> : filteredClients.length === 0 ? (
-                <div className="p-16 text-center text-slate-400"><Users size={48} className="mx-auto mb-4 opacity-20" /><p>No contacts found.</p></div>
-              ) : (
-                <div className="divide-y divide-slate-100">
-                  {filteredClients.map((client) => (
-                    <div key={client.id} onClick={() => navigate(`/client/${client.id}`)} className="group p-4 px-6 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition-all border-l-4 border-transparent hover:border-teal-500">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm">{client.name[0]}</div>
-                        <div><p className="font-bold text-slate-900">{client.name}</p><p className="text-xs text-slate-500">{client.email}</p></div>
-                      </div>
-                      <div className="flex items-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
-                        <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide border bg-slate-100 text-slate-600">{client.status || 'Queue'}</button>
-                        <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2 text-slate-400 hover:text-purple-600"><Sparkles size={16} /></button>
-                        <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2 text-slate-400 hover:text-red-500"><Trash2 size={16} /></button>
-                      </div>
-                    </div>
-                  ))}
+        {/* Client List */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <div className="px-6 md:px-8 py-5 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+            <h3 className="font-bold text-slate-900 text-lg">Client List</h3>
+            <span className="text-xs text-teal-700 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full font-medium">Live Data</span>
+          </div>
+          
+          {loading ? <div className="p-12 text-center text-slate-500">Loading...</div> : filteredClients.length === 0 ? (
+            <div className="p-16 text-center text-slate-400"><Users size={48} className="mx-auto mb-4 opacity-20" /><p>No clients found.</p></div>
+          ) : (
+            <div className="divide-y divide-slate-100">
+              {filteredClients.map((client) => (
+                <div key={client.id} onClick={() => navigate(`/client/${client.id}`)} className="group p-4 px-6 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition-all border-l-4 border-transparent hover:border-teal-500">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm">{client.name[0]}</div>
+                    <div><p className="font-bold text-slate-900">{client.name}</p><p className="text-xs text-slate-500">{client.email}</p></div>
+                  </div>
+                  <div className="flex items-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                    <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide border bg-slate-100 text-slate-600">{client.status || 'Lead'}</button>
+                    <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2 text-slate-400 hover:text-purple-600"><Sparkles size={16} /></button>
+                    <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2 text-slate-400 hover:text-red-500"><Trash2 size={16} /></button>
+                  </div>
                 </div>
-              )}
+              ))}
             </div>
-
-            {/* NEW: Agent Activity Feed (Sidebar) */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-                <h3 className="font-bold text-slate-900 mb-6 flex items-center gap-2"><Activity size={18} className="text-teal-600"/> Agent Activity</h3>
-                <div className="space-y-6 relative">
-                    <div className="absolute left-2.5 top-2 bottom-2 w-0.5 bg-slate-100"></div>
-                    {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="relative flex gap-4 items-start">
-                            <div className="w-5 h-5 rounded-full bg-white border-2 border-teal-500 z-10 mt-0.5"></div>
-                            <div>
-                                <p className="text-sm text-slate-700 font-medium">Agent processed incoming email</p>
-                                <p className="text-xs text-slate-400 mt-1">Action taken • {i * 15} mins ago</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+          )}
         </div>
       </div>
 
-      {/* KEEP MODALS (Add, Upgrade, AI, Config) */}
       <AgentConfigModal isOpen={isAgentConfigOpen} onClose={() => setIsAgentConfigOpen(false)} user={user} />
-      {/* ... (Keep Upgrade, Add, AI modals from previous code here for brevity) ... */}
-        {isUpgradeModalOpen && (
+
+      {/* NEW: FULL PRICING TABLE MODAL */}
+      {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-amber-400 relative">
-             <div className="bg-gradient-to-r from-amber-50 to-yellow-50 px-8 py-6 border-b border-amber-100 text-center">
-              <div className="w-14 h-14 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30 text-white"><Sparkles size={28} fill="currentColor" /></div>
-              <h3 className="text-2xl font-extrabold text-slate-900">Unlock Pro Power</h3>
-            </div>
-            <div className="p-8 bg-white text-center">
-              <p className="text-slate-500 mb-6">Limit reached. Upgrade to continue.</p>
-              <a href={PAYMENT_LINK} target="_blank" rel="noreferrer" className="w-full block py-3.5 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 mb-4">Upgrade for $29/mo</a>
-              <button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 text-sm">Maybe Later</button>
+          <div className="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-5xl overflow-y-auto border border-slate-200 relative max-h-[90vh]">
+            <button onClick={() => setIsUpgradeModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-white rounded-full p-2 shadow-sm z-10"><X size={24} /></button>
+            <div className="p-8 md:p-12">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Upgrade Your Agent Platform</h2>
+                <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-client limit. Choose a plan below to scale your business.</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6 items-start">
+                <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative opacity-60 grayscale">
+                   <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
+                   <div className="text-4xl font-extrabold text-slate-900 mb-6">$0<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+                   <button disabled className="w-full py-3 rounded-xl font-bold border-2 border-slate-200 text-slate-400 mb-8 cursor-not-allowed">Current Plan</button>
+                   <ul className="space-y-4"><li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Up to 3 Clients</li></ul>
+                </div>
+                <div className="bg-white p-8 rounded-2xl border-4 border-teal-500 shadow-2xl relative transform md:-translate-y-4">
+                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">Most Popular</div>
+                   <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">Pro <Zap size={20} className="text-amber-400 fill-amber-400"/></h3>
+                   <div className="text-4xl font-extrabold text-slate-900 mb-6">$29<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+                   <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl font-bold bg-teal-600 text-white hover:bg-teal-700 shadow-lg flex items-center justify-center mb-8">Upgrade Now</a>
+                   <ul className="space-y-4">
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Unlimited Clients</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> AI Email Assistant</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Smart Calendar</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Priority Support</li>
+                   </ul>
+                </div>
+                 <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Agency</h3>
+                    <div className="text-4xl font-extrabold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+                    <button className="w-full py-3 rounded-xl font-bold bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 transition-all mb-8">Contact Sales</button>
+                    <ul className="space-y-4">
+                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Everything in Pro</li>
+                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Team Accounts</li>
+                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Custom Branding</li>
+                    </ul>
+                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -279,7 +309,7 @@ export default function Dashboard() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-md p-6 md:p-8">
-              <h3 className="font-bold text-xl mb-4">Add Manual Entry</h3>
+              <h3 className="font-bold text-xl mb-4">Add Client</h3>
               <form onSubmit={handleAddClient} className="space-y-4">
                  <input autoFocus required placeholder="Full Name" className="w-full p-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
                  <input placeholder="Email Address" className="w-full p-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
@@ -296,7 +326,7 @@ export default function Dashboard() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-lg border-4 border-purple-50 p-6 md:p-8">
               <div className="flex justify-between items-center mb-4">
-                 <h3 className="font-bold text-purple-900 flex gap-2"><Sparkles/> AI Agent Response</h3>
+                 <h3 className="font-bold text-purple-900 flex gap-2"><Sparkles/> AI Assistant</h3>
                  <button onClick={() => setAiModalOpen(false)}><X size={24} className="text-slate-400"/></button>
               </div>
               {aiLoading ? <div className="text-center py-10">Generating...</div> : <div className="bg-slate-50 p-4 rounded-lg text-sm whitespace-pre-wrap border">{aiDraft}</div>}
