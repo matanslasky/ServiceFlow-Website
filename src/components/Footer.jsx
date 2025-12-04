@@ -1,28 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { Twitter, Linkedin, Github, X } from 'lucide-react';
+import { Twitter, Linkedin, Github, X, Clock } from 'lucide-react'; // Added Clock
 
 export default function Footer() {
   const [notification, setNotification] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Effect to manage the fade-out time
+  useEffect(() => {
+    if (notification) {
+      setIsVisible(true);
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 2500); // Start fade out after 2.5s
+
+      const clearTimer = setTimeout(() => {
+        setNotification(null);
+      }, 3000); // Fully clear state after 3s transition
+
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(clearTimer);
+      };
+    }
+  }, [notification]);
 
   const showNotification = (msg) => {
     setNotification(msg);
-    setTimeout(() => setNotification(null), 3000);
   };
 
   const handleComingSoon = (e) => {
     e.preventDefault();
-    showNotification("Coming Soon");
+    showNotification("Feature Coming Soon");
   };
 
   return (
     <footer className="bg-white border-t border-slate-200 pt-16 pb-8 relative">
-      {/* Notification Toast */}
+      {/* Notification Toast - Enhanced Styling & Fade Effect */}
       {notification && (
-        <div className="fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-3 rounded-lg shadow-xl flex items-center gap-3 z-50 animate-in slide-in-from-bottom-5 fade-in duration-300">
+        <div 
+          className={`fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 z-50 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <Clock size={16} className="text-teal-400" />
           <span className="text-sm font-medium">{notification}</span>
-          <button onClick={() => setNotification(null)} className="text-slate-400 hover:text-white">
+          <button onClick={() => { setIsVisible(false); setNotification(null); }} className="text-slate-400 hover:text-white">
             <X size={16} />
           </button>
         </div>
