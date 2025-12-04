@@ -224,10 +224,6 @@ export default function LandingPage() {
 }
 
 
-### Step 3: Deploy
-```bash
-git add .
-git commit -m "Add professional footer and component" --no-verify
-git push origin main --no-verify
 
-Now your site will feel like a legitimate, established software company!
+
+
