@@ -11,13 +11,15 @@ export default function Footer() {
   useEffect(() => {
     if (notification) {
       setIsVisible(true);
+      // Start fade out after 1.0s (was 2.5s)
       const timer = setTimeout(() => {
         setIsVisible(false);
-      }, 2500); // Start fade out after 2.5s
+      }, 1000);
 
+      // Fully clear state after 1.5s transition (was 3.0s)
       const clearTimer = setTimeout(() => {
         setNotification(null);
-      }, 3000); // Fully clear state after 3s transition
+      }, 1500);
 
       return () => {
         clearTimeout(timer);
@@ -40,6 +42,7 @@ export default function Footer() {
       {/* Notification Toast - Enhanced Styling & Fade Effect */}
       {notification && (
         <div 
+          // Reduced duration in useEffect (1.5s total time) makes the fade faster
           className={`fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 z-50 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         >
           <Clock size={16} className="text-teal-400" />
@@ -68,9 +71,11 @@ export default function Footer() {
               >
                 <Twitter size={20} />
               </a>
+              {/* UPDATED LINKEDIN URL */}
               <a 
-                href="#" 
-                onClick={handleComingSoon}
+                href="https://www.linkedin.com/in/matan-slasky-45ba5a23a/?originalSubdomain=il" 
+                target="_blank" 
+                rel="noopener noreferrer" 
                 className="text-slate-400 hover:text-teal-600 transition-colors"
               >
                 <Linkedin size={20} />
