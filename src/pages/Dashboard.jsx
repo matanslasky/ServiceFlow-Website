@@ -33,10 +33,10 @@ export default function Dashboard() {
   const [newClientName, setNewClientName] = useState('');
   const [newClientEmail, setNewClientEmail] = useState('');
 
-  // New State for Notifications
+  // --- NEW: Notification State ---
   const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([]); // Empty for now
 
-  // Replace with your real link
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
 
   const fetchClients = async () => {
@@ -174,7 +174,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-4 md:gap-6 relative">
            <button onClick={() => navigate('/calendar')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><Calendar size={18} /> <span className="hidden md:inline">Calendar</span></button>
            
-           {/* Notification Bell */}
+           {/* --- NEW: Notification Bell --- */}
            <div className="relative">
              <button 
                onClick={() => setShowNotifications(!showNotifications)} 
@@ -190,12 +190,19 @@ export default function Dashboard() {
                    <h3 className="font-bold text-slate-900 text-sm">Notifications</h3>
                    <button onClick={() => setShowNotifications(false)}><X size={14} className="text-slate-400 hover:text-slate-600"/></button>
                  </div>
-                 <div className="text-center py-6 text-slate-400 text-sm italic">
-                   <div className="bg-slate-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                     <Bell size={20} className="opacity-30"/>
+                 {notifications.length === 0 ? (
+                   <div className="text-center py-6 text-slate-400 text-sm italic">
+                     <div className="bg-slate-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                       <Bell size={20} className="opacity-30"/>
+                     </div>
+                     No new alerts from your agents.
                    </div>
-                   No new alerts from your agents.
-                 </div>
+                 ) : (
+                   <div className="space-y-2">
+                     {/* Logic ready for future notifications */}
+                     {notifications.map((n, i) => <div key={i}>{n}</div>)}
+                   </div>
+                 )}
                </div>
              )}
            </div>
@@ -217,7 +224,7 @@ export default function Dashboard() {
           <div className="flex gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-               <input type="text" placeholder="Search..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+               <input type="text" placeholder="Search logs..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             </div>
             <button onClick={handleExportCSV} className="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center" title="Export CSV"><Download size={20} /></button>
             <button onClick={() => setIsAgentConfigOpen(true)} className="bg-white border border-slate-200 text-teal-600 px-4 py-3 rounded-xl font-bold hover:bg-teal-50 transition-all shadow-sm flex items-center justify-center gap-2" title="Configure Agent"><Settings size={20} /></button>
@@ -229,7 +236,7 @@ export default function Dashboard() {
           </div>
         </div>
         
-        {/* NEW: AGENT ANALYTICS (Empty States) */}
+        {/* --- NEW: ANALYTICS WIDGETS (Empty States) --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
              <div className="absolute top-3 right-3 bg-slate-100 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</div>
@@ -269,7 +276,7 @@ export default function Dashboard() {
             </div>
           </div>
           
-          {/* Upcoming Tasks (Real DB Data) */}
+          {/* Upcoming Tasks */}
           <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
              <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2"><Calendar size={20} className="text-teal-600"/> Next Follow-ups</h3>
              {upcomingTasks.length === 0 ? (
@@ -321,7 +328,7 @@ export default function Dashboard() {
 
       <AgentConfigModal isOpen={isAgentConfigOpen} onClose={() => setIsAgentConfigOpen(false)} user={user} />
 
-      {/* NEW: FULL PRICING TABLE MODAL */}
+      {/* Upgrade Modal - Full Pricing Table */}
       {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-5xl overflow-y-auto border border-slate-200 relative max-h-[90vh]">
@@ -354,11 +361,6 @@ export default function Dashboard() {
                     <h3 className="text-xl font-bold text-slate-900 mb-2">Agency</h3>
                     <div className="text-4xl font-extrabold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-medium">/mo</span></div>
                     <button className="w-full py-3 rounded-xl font-bold bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 transition-all mb-8">Contact Sales</button>
-                    <ul className="space-y-4">
-                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Everything in Pro</li>
-                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Team Accounts</li>
-                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Custom Branding</li>
-                    </ul>
                  </div>
               </div>
               <div className="mt-12"><button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll stick to free for now</button></div>
@@ -370,7 +372,7 @@ export default function Dashboard() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-md p-6 md:p-8">
-              <h3 className="font-bold text-xl mb-4">Add New Contact</h3>
+              <h3 className="font-bold text-xl mb-4">Add Client</h3>
               <form onSubmit={handleAddClient} className="space-y-4">
                  <input autoFocus required placeholder="Name" className="w-full p-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
                  <input placeholder="Email" className="w-full p-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
@@ -387,7 +389,7 @@ export default function Dashboard() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-lg border-4 border-purple-50 p-6 md:p-8">
               <div className="flex justify-between items-center mb-4">
-                 <h3 className="font-bold text-purple-900 flex gap-2"><Sparkles/> AI Assistant</h3>
+                 <h3 className="font-bold text-purple-900 flex gap-2"><Sparkles/> AI Agent Response</h3>
                  <button onClick={() => setAiModalOpen(false)}><X size={24} className="text-slate-400"/></button>
               </div>
               {aiLoading ? <div className="text-center py-10">Generating...</div> : <div className="bg-slate-50 p-4 rounded-lg text-sm whitespace-pre-wrap border">{aiDraft}</div>}
