@@ -9,9 +9,11 @@ import Dashboard from './pages/Dashboard';
 import ClientDetails from './pages/ClientDetails';
 import Billing from './pages/Billing';
 import Success from './pages/Success';
-import Settings from './pages/Settings'; // <--- NEW IMPORT
+import Settings from './pages/Settings';
+import CalendarView from './pages/CalendarView'; // <--- Ensure this file exists
 import NotFound from './pages/NotFound';
 
+// Import Components
 import ProtectedRoute from './components/ProtectedRoute';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -42,9 +44,10 @@ export default function App() {
         <Route path="/client/:id" element={<ProtectedRoute><ClientDetails /></ProtectedRoute>} />
         <Route path="/billing" element={<ProtectedRoute><Billing /></ProtectedRoute>} />
         <Route path="/success" element={<ProtectedRoute><Success /></ProtectedRoute>} />
-        
-        {/* --- NEW ROUTE --- */}
         <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+        
+        {/* CALENDAR ROUTE */}
+        <Route path="/calendar" element={<ProtectedRoute><CalendarView /></ProtectedRoute>} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
