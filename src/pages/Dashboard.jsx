@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, MoreVertical } from 'lucide-react';
+import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Mail, ChevronRight } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -35,11 +35,7 @@ export default function Dashboard() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        const { data, error } = await supabase
-          .from('clients')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
+        const { data, error } = await supabase.from('clients').select('*').order('created_at', { ascending: false });
         if (error) throw error;
         if (data) setClients(data);
       }
@@ -63,26 +59,20 @@ export default function Dashboard() {
     init();
   }, []);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  };
+  const handleLogout = async () => { await supabase.auth.signOut(); };
 
   const handleAddClient = async (e) => {
     e.preventDefault();
     if (clients.length >= 3) { setIsModalOpen(false); setIsUpgradeModalOpen(true); return; }
     if (!newClientName) return;
-
     const { error } = await supabase.from('clients').insert([{ name: newClientName, email: newClientEmail }]);
-
     if (error) alert('Error: ' + error.message);
     else {
       const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
       if (serviceID && templateID && publicKey) {
-        emailjs.send(serviceID, templateID, { to_name: newClientName, to_email: newClientEmail }, publicKey)
-          .then(() => console.log("Sent"), (err) => console.error("Failed", err));
+        emailjs.send(serviceID, templateID, { to_name: newClientName, to_email: newClientEmail }, publicKey);
       }
       setIsModalOpen(false);
       setNewClientName('');
@@ -104,28 +94,23 @@ export default function Dashboard() {
   };
 
   const generateEmail = async (clientName) => {
-    if (!aiEngine) { alert("AI Service is offline."); return; }
-    setAiModalOpen(true);
-    setAiLoading(true);
-    setAiDraft('');
+    if (!aiEngine) { alert("AI Offline."); return; }
+    setAiModalOpen(true); setAiLoading(true); setAiDraft('');
     try {
-      // 1. Get Detailed Personality
+      // 1. Get Settings
       const { data: { user } } = await supabase.auth.getUser();
       const { data: settings } = await supabase.from('agent_settings').select('*').eq('user_id', user.id).single();
       
       const name = settings?.agent_name || "Medical Assistant";
+      const title = settings?.job_title || "Virtual Assistant";
+      const context = settings?.business_context || "";
       const tone = settings?.agent_tone || "Professional";
-      const form = settings?.formality_level || 5; // 1-10
-      const creat = settings?.creativity_level || 5; // 1-10
-      const sig = settings?.email_signature || "Sent by your AI Assistant";
 
-      // 2. Advanced Prompt
-      const prompt = `Act as an AI agent named ${name}. Write a welcome email for a client named ${clientName}.
-      Tone: ${tone}. 
-      Formality Level: ${form}/10 (1=Casual, 10=Formal).
-      Creativity Level: ${creat}/10.
-      Goal: Schedule a kick-off call.
-      Signature: ${sig}.
+      // 2. Enhanced Prompt
+      const prompt = `You are ${name}, a ${title}.
+      Business Context: ${context}
+      Task: Write a ${tone} welcome email to a patient named ${clientName}.
+      Goal: Schedule an appointment.
       Keep it under 100 words.`;
       
       const model = aiEngine.getGenerativeModel({ model: "gemini-pro"});
@@ -143,25 +128,17 @@ export default function Dashboard() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleExportCSV = () => {
-    const csvContent = "data:text/csv;charset=utf-8," + "Name,Email,Status,Created At\n" + clients.map(c => `${c.name},${c.email},${c.status},${c.created_at}`).join("\n");
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "clients.csv");
-    document.body.appendChild(link);
-    link.click();
-  };
-
   const filteredClients = clients.filter(client => 
     client.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const upcomingTasks = clients.filter(c => c.next_follow_up).sort((a, b) => new Date(a.next_follow_up) - new Date(b.next_follow_up)).slice(0, 3);
+
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">Error: {error}</div>;
 
   return (
-    <div className="min-h-screen bg-slate-50 relative font-sans">
+    <div className="min-h-screen bg-slate-50 font-sans">
       {/* Navbar */}
       <div className="bg-white border-b border-slate-200 border-t-4 border-t-teal-600 px-6 md:px-8 py-4 flex justify-between items-center sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-2"><Logo /></div>
@@ -175,128 +152,138 @@ export default function Dashboard() {
       </div>
 
       <div className="p-6 md:p-10 max-w-7xl mx-auto">
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Dashboard</h1>
-            <p className="text-slate-500 mt-1 text-sm md:text-base">Manage your monitored contacts.</p>
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Agent Command Center</h1>
+            <p className="text-slate-500 mt-1 text-sm font-medium">Real-time monitoring of your AI workforce.</p>
           </div>
-          
           <div className="flex gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-               <input type="text" placeholder="Search..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+               <input type="text" placeholder="Search logs..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             </div>
-            <button onClick={handleExportCSV} className="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center" title="Export CSV"><Download size={20} /></button>
-            <button onClick={() => { if (clients.length >= 3) setIsUpgradeModalOpen(true); else setIsModalOpen(true); }} className="bg-slate-900 text-white px-4 md:px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap">
-              <Plus size={20} /> <span className="hidden md:inline">New Client</span>
+            <button onClick={() => { if (clients.length >= 3) setIsUpgradeModalOpen(true); else setIsModalOpen(true); }} className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap">
+              <Plus size={20} /> <span className="hidden md:inline">Manual Entry</span>
             </button>
           </div>
         </div>
 
-        {/* NEW LAYOUT: CARD GRID (Instead of Table) */}
-        {loading ? <div className="p-12 text-center text-slate-500">Loading...</div> : clients.length === 0 ? (
-            <div className="p-16 text-center text-slate-400 bg-white rounded-2xl border border-slate-200"><Users size={48} className="mx-auto mb-4 opacity-20" /><p>No contacts found.</p></div>
+        {/* Stats & Tasks */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+           <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6">
+             <div className="w-14 h-14 bg-teal-50 rounded-full flex items-center justify-center text-teal-600"><Users size={28} /></div>
+             <div>
+               <p className="text-slate-500 text-xs font-bold uppercase tracking-wider">Active Patients</p>
+               <p className="text-3xl font-extrabold text-slate-900">{clients.length}</p>
+             </div>
+           </div>
+
+           <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+             <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2 text-sm uppercase tracking-wide"><Calendar size={18} className="text-teal-600"/> Next Agent Actions</h3>
+             {upcomingTasks.length === 0 ? <p className="text-slate-400 text-sm italic">No scheduled follow-ups.</p> : (
+               <div className="grid md:grid-cols-3 gap-4">
+                 {upcomingTasks.map(task => (
+                   <div key={task.id} onClick={() => navigate(`/client/${task.id}`)} className="bg-slate-50 p-3 rounded-xl border border-slate-200 hover:border-teal-300 cursor-pointer transition-all">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">{new Date(task.next_follow_up).toLocaleDateString()}</span>
+                        <ChevronRight size={14} className="text-slate-400"/>
+                      </div>
+                      <p className="font-bold text-slate-700 text-sm truncate">{task.name}</p>
+                   </div>
+                 ))}
+               </div>
+             )}
+           </div>
+        </div>
+
+        {/* Client List - RESTORED LIST VIEW BUT PREMIUM */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <div className="px-8 py-5 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+            <h3 className="font-bold text-slate-900">Monitored Contacts</h3>
+            <span className="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-100">Live Sync</span>
+          </div>
+
+          {loading ? <div className="p-12 text-center text-slate-500">Loading...</div> : filteredClients.length === 0 ? (
+            <div className="p-16 text-center text-slate-400"><Users size={48} className="mx-auto mb-4 opacity-20" /><p>No contacts found.</p></div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="divide-y divide-slate-100">
               {filteredClients.map((client) => (
                 <div 
                   key={client.id} 
                   onClick={() => navigate(`/client/${client.id}`)}
-                  className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-teal-200 transition-all cursor-pointer group relative overflow-hidden"
+                  className="group p-4 px-8 flex items-center justify-between hover:bg-slate-50 cursor-pointer transition-all border-l-4 border-transparent hover:border-teal-500"
                 >
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 font-bold text-lg group-hover:bg-teal-50 group-hover:text-teal-600 transition-colors">
-                        {client.name[0]}
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-slate-900 text-lg">{client.name}</h3>
-                        <p className="text-xs text-slate-500">{client.email}</p>
-                      </div>
+                  {/* Name & Email */}
+                  <div className="flex items-center gap-4 w-1/3">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm group-hover:bg-white group-hover:shadow-sm transition-all">
+                      {client.name[0]}
                     </div>
-                    <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${client.status === 'Active Client' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>{client.status}</button>
+                    <div>
+                      <p className="font-bold text-slate-900">{client.name}</p>
+                      <p className="text-xs text-slate-500">{client.email}</p>
+                    </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 flex justify-between items-center">
-                    <span className="text-xs text-slate-400 font-medium">Added {new Date(client.created_at).toLocaleDateString()}</span>
-                    <div className="flex gap-2">
-                       <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all" title="AI Draft"><Sparkles size={18} /></button>
-                       <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all" title="Delete"><Trash2 size={18} /></button>
-                    </div>
+                  {/* Status Badge */}
+                  <div className="w-1/3 flex justify-center md:justify-start">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }}
+                      className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide border transition-all ${
+                      client.status === 'Active Client' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-slate-100 text-slate-600 border-slate-200'
+                    }`}>
+                      {client.status || 'In Queue'}
+                    </button>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-2 justify-end w-1/3 opacity-60 group-hover:opacity-100 transition-opacity">
+                    <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all flex items-center gap-1 text-xs font-medium border border-transparent hover:border-purple-100">
+                      <Sparkles size={16} /> <span className="hidden md:inline">AI Draft</span>
+                    </button>
+                    <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
+                      <Trash2 size={16} />
+                    </button>
+                    <ChevronRight size={16} className="text-slate-300" />
                   </div>
                 </div>
               ))}
             </div>
-        )}
+          )}
+        </div>
       </div>
 
-      {/* UPGRADE MODAL (RESTORED PRICING DETAILS) */}
+      {/* KEEP EXISTING MODALS (UPGRADE, ADD, AI) */}
       {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-5xl overflow-y-auto border border-slate-200 relative max-h-[90vh]">
-            <button onClick={() => setIsUpgradeModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-white rounded-full p-2 shadow-sm z-10"><X size={24} /></button>
-            <div className="p-8 md:p-12">
-              <div className="text-center mb-12"><h2 className="text-3xl font-extrabold text-slate-900 mb-4">Upgrade Your Agent Platform</h2><p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-contact limit. Choose a plan below to deploy unlimited agents.</p></div>
-              <div className="grid md:grid-cols-3 gap-6 items-start">
-                
-                {/* Free Plan */}
-                <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative opacity-60 grayscale">
-                   <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
-                   <div className="text-4xl font-extrabold text-slate-900 mb-6">$0<span className="text-lg text-slate-400 font-medium">/mo</span></div>
-                   <button disabled className="w-full py-3 rounded-xl font-bold border-2 border-slate-200 text-slate-400 mb-8 cursor-not-allowed">Current Plan</button>
-                   <ul className="space-y-4"><li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Up to 3 Clients</li></ul>
-                </div>
-
-                {/* Pro Plan */}
-                <div className="bg-white p-8 rounded-2xl border-4 border-teal-500 shadow-2xl relative transform md:-translate-y-4">
-                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">Most Popular</div>
-                   <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">Pro <Zap size={20} className="text-amber-400 fill-amber-400"/></h3>
-                   <div className="text-4xl font-extrabold text-slate-900 mb-6">$29<span className="text-lg text-slate-400 font-medium">/mo</span></div>
-                   <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl font-bold bg-teal-600 text-white hover:bg-teal-700 shadow-lg flex items-center justify-center mb-8">Upgrade Now</a>
-                   <ul className="space-y-4">
-                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Unlimited Clients</li>
-                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> AI Email Assistant</li>
-                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Smart Calendar Sync</li>
-                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Priority Support</li>
-                   </ul>
-                </div>
-
-                 {/* Agency Plan */}
-                 <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">Agency</h3>
-                    <div className="text-4xl font-extrabold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-medium">/mo</span></div>
-                    <button className="w-full py-3 rounded-xl font-bold bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 transition-all mb-8">Contact Sales</button>
-                    <ul className="space-y-4">
-                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Everything in Pro</li>
-                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Team Accounts</li>
-                    </ul>
-                 </div>
-              </div>
-              <div className="mt-12"><button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll stick to free for now</button></div>
-            </div>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-amber-400 relative p-8 text-center">
+             <div className="w-14 h-14 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white"><Sparkles size={28} fill="currentColor" /></div>
+             <h3 className="text-2xl font-extrabold text-slate-900">Unlock Pro Power</h3>
+             <p className="text-slate-500 mb-8 text-sm">Upgrade to remove limits and enable AI.</p>
+             <div className="space-y-3 text-left bg-slate-50 p-4 rounded-xl border border-slate-100 mb-8">
+                <div className="flex gap-3 text-sm font-medium text-slate-700"><Check size={16} className="text-teal-600"/> Unlimited Patients</div>
+                <div className="flex gap-3 text-sm font-medium text-slate-700"><Check size={16} className="text-teal-600"/> AI Secretary Agent</div>
+                <div className="flex gap-3 text-sm font-medium text-slate-700"><Check size={16} className="text-teal-600"/> Smart Calendar Sync</div>
+             </div>
+             <a href={PAYMENT_LINK} target="_blank" rel="noreferrer" className="w-full block py-3.5 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 mb-4">Upgrade for $29/mo</a>
+             <button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 text-sm">Maybe Later</button>
           </div>
         </div>
       )}
 
-      {/* Add Client & AI Modals (Implicitly included) */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200">
-            <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-              <h3 className="font-bold text-xl text-slate-900">Add New Client</h3>
-              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600"><X size={24} /></button>
-            </div>
-            <form onSubmit={handleAddClient} className="p-8 space-y-5">
-              <input autoFocus required type="text" placeholder="Name" className="w-full px-4 py-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
-              <input type="email" placeholder="Email" className="w-full px-4 py-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
-              <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="px-6 py-3 text-slate-600">Cancel</button>
-                <button type="submit" className="px-8 py-3 bg-slate-900 text-white rounded-xl font-bold">Save</button>
-              </div>
-            </form>
-          </div>
+           <div className="bg-white rounded-2xl w-full max-w-md p-6 md:p-8">
+              <h3 className="font-bold text-xl mb-4">Add Manual Entry</h3>
+              <form onSubmit={handleAddClient} className="space-y-4">
+                 <input autoFocus required placeholder="Full Name" className="w-full p-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
+                 <input placeholder="Email Address" className="w-full p-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
+                 <div className="flex justify-end gap-3 pt-2">
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 text-slate-600">Cancel</button>
+                    <button type="submit" className="px-6 py-2 bg-slate-900 text-white rounded-lg font-bold">Save</button>
+                 </div>
+              </form>
+           </div>
         </div>
       )}
 
@@ -304,10 +291,10 @@ export default function Dashboard() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-lg border-4 border-purple-50 p-6 md:p-8">
               <div className="flex justify-between items-center mb-4">
-                 <h3 className="font-bold text-purple-900 flex gap-2"><Sparkles/> AI Assistant</h3>
+                 <h3 className="font-bold text-purple-900 flex gap-2"><Sparkles/> AI Agent Response</h3>
                  <button onClick={() => setAiModalOpen(false)}><X size={24} className="text-slate-400"/></button>
               </div>
-              {aiLoading ? <div className="text-center py-10">Generating...</div> : <div className="bg-slate-50 p-4 rounded-lg text-sm whitespace-pre-wrap border">{aiDraft}</div>}
+              {aiLoading ? <div className="text-center py-10">Thinking...</div> : <div className="bg-slate-50 p-4 rounded-lg text-sm whitespace-pre-wrap border">{aiDraft}</div>}
               {!aiLoading && (
                  <div className="pt-6 flex justify-end"><button onClick={copyToClipboard} className="flex gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg font-bold">{copied ? "Copied!" : "Copy Text"}</button></div>
               )}
