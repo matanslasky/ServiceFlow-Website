@@ -130,10 +130,7 @@ export default function Dashboard() {
   };
 
   const handleExportCSV = () => {
-    const csvContent = "data:text/csv;charset=utf-8," 
-      + "Name,Email,Status,Created At\n"
-      + clients.map(c => `${c.name},${c.email},${c.status},${c.created_at}`).join("\n");
-    
+    const csvContent = "data:text/csv;charset=utf-8," + "Name,Email,Status,Created At\n" + clients.map(c => `${c.name},${c.email},${c.status},${c.created_at}`).join("\n");
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
@@ -176,7 +173,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 relative font-sans">
-      {/* Navbar - Premium Green Style Restored */}
+      {/* Navbar */}
       <div className="bg-white border-b border-slate-200 border-t-4 border-t-teal-600 px-6 md:px-8 py-4 flex justify-between items-center sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-2">
           <Logo />
@@ -308,21 +305,58 @@ export default function Dashboard() {
       {/* Modals */}
       {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200 border-4 border-amber-400 relative">
-            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 px-8 py-6 border-b border-amber-100 text-center">
-              <div className="w-14 h-14 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30 text-white"><Sparkles size={28} fill="currentColor" /></div>
-              <h3 className="text-2xl font-extrabold text-slate-900">Unlock Pro Power</h3>
-            </div>
-            <div className="p-8 bg-white">
-              <p className="text-center text-slate-500 mb-6 leading-relaxed">You've hit the 3-client limit on the free plan. Upgrade now to scale your business without boundaries.</p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-slate-700"><Check className="text-teal-600 shrink-0" size={20} /><span className="font-medium">Unlimited Clients</span></div>
-                <div className="flex items-center gap-3 text-slate-700"><Check className="text-teal-600 shrink-0" size={20} /><span className="font-medium">AI Email Assistant</span></div>
-                <div className="flex items-center gap-3 text-slate-700"><Check className="text-teal-600 shrink-0" size={20} /><span className="font-medium">Smart Calendar Sync</span></div>
-                <div className="flex items-center gap-3 text-slate-700"><Check className="text-teal-600 shrink-0" size={20} /><span className="font-medium">Priority Support</span></div>
+          <div className="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-5xl overflow-y-auto border border-slate-200 relative max-h-[90vh]">
+            <button onClick={() => setIsUpgradeModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-white rounded-full p-2 shadow-sm z-10"><X size={24} /></button>
+
+            <div className="p-8 md:p-12">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Upgrade Your Agent Platform</h2>
+                <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-contact limit. Choose a plan below to deploy unlimited agents and scale your business.</p>
               </div>
-              <button onClick={() => navigate('/billing')} className="w-full py-3.5 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl active:scale-[0.98] flex items-center justify-center gap-2">Upgrade for $29/mo <Zap size={18} fill="currentColor" /></button>
-              <button onClick={() => setIsUpgradeModalOpen(false)} className="w-full mt-4 text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll keep it small</button>
+
+              <div className="grid md:grid-cols-3 gap-6 items-start">
+                {/* Free Plan */}
+                <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative opacity-60 grayscale">
+                   <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
+                   <div className="text-4xl font-extrabold text-slate-900 mb-6">$0<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+                   <button disabled className="w-full py-3 rounded-xl font-bold border-2 border-slate-200 text-slate-400 mb-8 cursor-not-allowed">Current Plan</button>
+                   <ul className="space-y-4">
+                     <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Up to 3 Clients</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Basic Dashboard</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Email Support</li>
+                   </ul>
+                </div>
+
+                {/* Pro Plan */}
+                <div className="bg-white p-8 rounded-2xl border-4 border-teal-500 shadow-2xl relative transform md:-translate-y-4">
+                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">Most Popular</div>
+                   <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">Pro <Zap size={20} className="text-amber-400 fill-amber-400"/></h3>
+                   <div className="text-4xl font-extrabold text-slate-900 mb-6">$29<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+                   <a href={PAYMENT_LINK} target="_blank" rel="noopener noreferrer" className="w-full py-3 rounded-xl font-bold bg-teal-600 text-white hover:bg-teal-700 shadow-lg flex items-center justify-center mb-8">Upgrade Now</a>
+                   <ul className="space-y-4">
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Unlimited Clients</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> AI Email Assistant</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Smart Calendar Sync</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Priority Support</li>
+                   </ul>
+                </div>
+
+                 {/* Agency Plan */}
+                 <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Agency</h3>
+                    <div className="text-4xl font-extrabold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+                    <button className="w-full py-3 rounded-xl font-bold bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 transition-all mb-8">Contact Sales</button>
+                    <ul className="space-y-4">
+                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Everything in Pro</li>
+                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Team Accounts</li>
+                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Custom Branding</li>
+                    </ul>
+                 </div>
+              </div>
+              
+              <div className="mt-12">
+                <button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll stick to free for now</button>
+              </div>
             </div>
           </div>
         </div>
@@ -331,7 +365,7 @@ export default function Dashboard() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-md p-6 md:p-8">
-              <h3 className="font-bold text-xl mb-4">Add New Client</h3>
+              <h3 className="font-bold text-xl mb-4">Add New Contact</h3>
               <form onSubmit={handleAddClient} className="space-y-4">
                  <input autoFocus required placeholder="Name" className="w-full p-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
                  <input placeholder="Email" className="w-full p-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
