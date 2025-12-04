@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Mail, ChevronRight } from 'lucide-react';
+import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Mail, ChevronRight, Bell, Activity, Clock, BarChart3 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -32,6 +32,9 @@ export default function Dashboard() {
 
   const [newClientName, setNewClientName] = useState('');
   const [newClientEmail, setNewClientEmail] = useState('');
+
+  // New State for Notifications
+  const [showNotifications, setShowNotifications] = useState(false);
 
   // Replace with your real link
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
@@ -168,8 +171,35 @@ export default function Dashboard() {
       {/* Navbar */}
       <div className="bg-white border-b border-slate-200 border-t-4 border-t-teal-600 px-6 md:px-8 py-4 flex justify-between items-center sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-2"><Logo /></div>
-        <div className="flex items-center gap-4 md:gap-6">
+        <div className="flex items-center gap-4 md:gap-6 relative">
            <button onClick={() => navigate('/calendar')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><Calendar size={18} /> <span className="hidden md:inline">Calendar</span></button>
+           
+           {/* Notification Bell */}
+           <div className="relative">
+             <button 
+               onClick={() => setShowNotifications(!showNotifications)} 
+               className={`text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors ${showNotifications ? 'text-teal-600' : ''}`}
+             >
+               <Bell size={18} />
+             </button>
+             
+             {/* Notification Dropdown */}
+             {showNotifications && (
+               <div className="absolute top-10 right-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in zoom-in duration-200">
+                 <div className="flex justify-between items-center mb-3 border-b border-slate-100 pb-2">
+                   <h3 className="font-bold text-slate-900 text-sm">Notifications</h3>
+                   <button onClick={() => setShowNotifications(false)}><X size={14} className="text-slate-400 hover:text-slate-600"/></button>
+                 </div>
+                 <div className="text-center py-6 text-slate-400 text-sm italic">
+                   <div className="bg-slate-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                     <Bell size={20} className="opacity-30"/>
+                   </div>
+                   No new alerts from your agents.
+                 </div>
+               </div>
+             )}
+           </div>
+
            <button onClick={() => navigate('/settings')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><Settings size={18} /> <span className="hidden md:inline">Settings</span></button>
            <button onClick={() => navigate('/billing')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><CreditCard size={18} /> <span className="hidden md:inline">Billing</span></button>
            <button onClick={handleLogout} className="text-slate-500 hover:text-red-600 flex items-center gap-2 text-xs md:text-sm font-medium transition-colors"><LogOut size={18} /> <span className="hidden md:inline">Sign Out</span></button>
@@ -199,7 +229,37 @@ export default function Dashboard() {
           </div>
         </div>
         
-        {/* REAL STATS ONLY */}
+        {/* NEW: AGENT ANALYTICS (Empty States) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+             <div className="absolute top-3 right-3 bg-slate-100 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</div>
+             <div className="flex items-center gap-3 mb-2 text-slate-500 text-sm font-bold uppercase tracking-wider">
+                <Mail size={16} className="text-teal-600"/> Email Triage Rate
+             </div>
+             <div className="text-3xl font-extrabold text-slate-300">--%</div>
+             <p className="text-xs text-slate-400 mt-1">Automated responses</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+             <div className="absolute top-3 right-3 bg-slate-100 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</div>
+             <div className="flex items-center gap-3 mb-2 text-slate-500 text-sm font-bold uppercase tracking-wider">
+                <BarChart3 size={16} className="text-teal-600"/> Leads Generated
+             </div>
+             <div className="text-3xl font-extrabold text-slate-300">--</div>
+             <p className="text-xs text-slate-400 mt-1">New clients this month</p>
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+             <div className="absolute top-3 right-3 bg-slate-100 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</div>
+             <div className="flex items-center gap-3 mb-2 text-slate-500 text-sm font-bold uppercase tracking-wider">
+                <Clock size={16} className="text-teal-600"/> Time Saved
+             </div>
+             <div className="text-3xl font-extrabold text-slate-300">--h</div>
+             <p className="text-xs text-slate-400 mt-1">Estimated manual work</p>
+          </div>
+        </div>
+
+        {/* REAL STATS & TASKS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6">
             <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"><Users size={28} /></div>
@@ -269,7 +329,7 @@ export default function Dashboard() {
             <div className="p-8 md:p-12">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Upgrade Your Agent Platform</h2>
-                <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-client limit. Choose a plan below to scale your business.</p>
+                <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-contact limit. Choose a plan below to deploy unlimited agents and scale your business.</p>
               </div>
               <div className="grid md:grid-cols-3 gap-6 items-start">
                 <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative opacity-60 grayscale">
@@ -286,7 +346,7 @@ export default function Dashboard() {
                    <ul className="space-y-4">
                      <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Unlimited Clients</li>
                      <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> AI Email Assistant</li>
-                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Smart Calendar</li>
+                     <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Smart Calendar Sync</li>
                      <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Priority Support</li>
                    </ul>
                 </div>
@@ -301,6 +361,7 @@ export default function Dashboard() {
                     </ul>
                  </div>
               </div>
+              <div className="mt-12"><button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll stick to free for now</button></div>
             </div>
           </div>
         </div>
@@ -309,10 +370,10 @@ export default function Dashboard() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
            <div className="bg-white rounded-2xl w-full max-w-md p-6 md:p-8">
-              <h3 className="font-bold text-xl mb-4">Add Client</h3>
+              <h3 className="font-bold text-xl mb-4">Add New Contact</h3>
               <form onSubmit={handleAddClient} className="space-y-4">
-                 <input autoFocus required placeholder="Full Name" className="w-full p-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
-                 <input placeholder="Email Address" className="w-full p-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
+                 <input autoFocus required placeholder="Name" className="w-full p-3 border rounded-lg" value={newClientName} onChange={(e) => setNewClientName(e.target.value)} />
+                 <input placeholder="Email" className="w-full p-3 border rounded-lg" value={newClientEmail} onChange={(e) => setNewClientEmail(e.target.value)} />
                  <div className="flex justify-end gap-3 pt-2">
                     <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 text-slate-600">Cancel</button>
                     <button type="submit" className="px-6 py-2 bg-slate-900 text-white rounded-lg font-bold">Save</button>
