@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { Twitter, Linkedin, Github, Mail } from 'lucide-react';
+import { Twitter, Linkedin, Github, X } from 'lucide-react';
 
 export default function Footer() {
+  const [notification, setNotification] = useState(null);
+
+  const showNotification = (msg) => {
+    setNotification(msg);
+    setTimeout(() => setNotification(null), 3000);
+  };
+
+  const handleComingSoon = (e) => {
+    e.preventDefault();
+    showNotification("Coming Soon");
+  };
+
   return (
-    <footer className="bg-white border-t border-slate-200 pt-16 pb-8">
+    <footer className="bg-white border-t border-slate-200 pt-16 pb-8 relative">
+      {/* Notification Toast */}
+      {notification && (
+        <div className="fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-3 rounded-lg shadow-xl flex items-center gap-3 z-50 animate-in slide-in-from-bottom-5 fade-in duration-300">
+          <span className="text-sm font-medium">{notification}</span>
+          <button onClick={() => setNotification(null)} className="text-slate-400 hover:text-white">
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           
@@ -16,9 +38,29 @@ export default function Footer() {
               Empowering service professionals with autonomous AI agents that handle the busy work, so you can focus on the real work.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-slate-400 hover:text-teal-600 transition-colors"><Twitter size={20} /></a>
-              <a href="#" className="text-slate-400 hover:text-teal-600 transition-colors"><Linkedin size={20} /></a>
-              <a href="#" className="text-slate-400 hover:text-teal-600 transition-colors"><Github size={20} /></a>
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-slate-400 hover:text-teal-600 transition-colors"
+              >
+                <Twitter size={20} />
+              </a>
+              <a 
+                href="#" 
+                onClick={handleComingSoon}
+                className="text-slate-400 hover:text-teal-600 transition-colors"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a 
+                href="https://github.com/matanslasky" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-slate-400 hover:text-teal-600 transition-colors"
+              >
+                <Github size={20} />
+              </a>
             </div>
           </div>
 
@@ -26,11 +68,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-slate-900 mb-4">Product</h4>
             <ul className="space-y-3 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Agents</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Integrations</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Changelog</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Docs</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Agents</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Integrations</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Pricing</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Changelog</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Docs</a></li>
             </ul>
           </div>
 
@@ -38,11 +80,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-slate-900 mb-4">Company</h4>
             <ul className="space-y-3 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-teal-600 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Careers</a> <span className="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full ml-1 font-bold">Hiring</span></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Partners</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">About Us</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Careers</a> <span className="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full ml-1 font-bold">Hiring</span></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Blog</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Contact</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Partners</a></li>
             </ul>
           </div>
 
@@ -50,10 +92,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-slate-900 mb-4">Legal</h4>
             <ul className="space-y-3 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-teal-600 transition-colors">Security</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Terms of Service</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Cookie Policy</a></li>
+              <li><a href="#" onClick={handleComingSoon} className="hover:text-teal-600 transition-colors">Security</a></li>
             </ul>
           </div>
         </div>
@@ -61,7 +103,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-sm">© {new Date().getFullYear()} ServiceFlow Inc. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-slate-400">
-            <a href="#" className="hover:text-slate-600 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500"></span> Systems Operational</a>
+            <a href="#" onClick={handleComingSoon} className="hover:text-slate-600 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500"></span> Systems Operational</a>
           </div>
         </div>
       </div>

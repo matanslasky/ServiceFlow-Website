@@ -5,7 +5,7 @@ import {
 import { createClient } from '@supabase/supabase-js';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
-import Footer from '../components/Footer'; // <--- NEW IMPORT
+import Footer from '../components/Footer';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -73,16 +73,16 @@ const Navbar = ({ onJoinClick }) => {
             <a href="#agents" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Our Agents</a>
             <a href="#use-cases" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Solutions</a>
             <Link to="/login" className="text-sm font-medium text-slate-900 hover:text-teal-600">Sign In</Link>
-            <Button variant="primary" className="py-2.5 px-5" onClick={onJoinClick}>Deploy Agents</Button>
+            <Button variant="primary" className="py-2.5 px-5" onClick={onJoinClick}>Create Account</Button>
           </div>
           <button className="md:hidden text-slate-900" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X size={24} /> : <Menu size={24} />}</button>
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-4 shadow-xl flex flex-col gap-4 animate-in slide-in-from-top-2">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-4 shadow-xl flex flex-col gap-4">
             <a href="#agents" onClick={() => setIsOpen(false)} className="text-slate-600 font-medium py-2 px-2 hover:bg-slate-50 rounded block">Agents</a>
             <Link to="/login" onClick={() => setIsOpen(false)} className="text-slate-600 font-medium py-2 px-2 hover:bg-slate-50 rounded block">Sign In</Link>
-            <Button variant="primary" className="w-full justify-center" onClick={() => { setIsOpen(false); onJoinClick(); }}>Deploy Agents</Button>
+            <Button variant="primary" className="w-full justify-center" onClick={() => { setIsOpen(false); onJoinClick(); }}>Create Account</Button>
         </div>
       )}
     </nav>
@@ -209,7 +209,7 @@ export default function LandingPage() {
                     <form onSubmit={handleJoinWaitlist} className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto items-center">
                         <input type="email" required placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} className="px-4 py-3 rounded-lg text-slate-900 w-full sm:w-auto flex-1 text-sm focus:ring-4 focus:ring-teal-300 placeholder:text-slate-400" />
                         <button type="submit" disabled={status === 'loading'} className="px-6 py-3 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 whitespace-nowrap text-sm w-full sm:w-auto shadow-lg">
-                          {status === 'loading' ? <Loader2 className="animate-spin mx-auto"/> : 'Deploy Agents'}
+                          {status === 'loading' ? <Loader2 className="animate-spin mx-auto"/> : 'Create Account'}
                         </button>
                     </form>
                 )}
@@ -217,13 +217,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- FOOTER ADDED HERE --- */}
       <Footer /> 
     </div>
   );
 }
-
-
-
-
-
