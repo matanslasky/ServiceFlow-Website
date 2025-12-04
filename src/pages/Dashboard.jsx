@@ -6,6 +6,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 
+// Connect to Database
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -149,7 +150,6 @@ export default function Dashboard() {
     .sort((a, b) => new Date(a.next_follow_up) - new Date(b.next_follow_up))
     .slice(0, 3);
 
-  // --- ERROR STATE ---
   if (error) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-4 text-center">
@@ -158,15 +158,8 @@ export default function Dashboard() {
         <p className="text-slate-500 max-w-md mb-6">
           We couldn't load your dashboard. This usually means the database table is missing or your internet connection is unstable.
         </p>
-        <div className="bg-red-50 text-red-700 p-4 rounded-lg text-sm font-mono mb-6 border border-red-200">
-          Error: {error}
-        </div>
-        <button 
-          onClick={() => window.location.reload()} 
-          className="px-6 py-3 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800"
-        >
-          Retry
-        </button>
+        <div className="bg-red-50 text-red-700 p-4 rounded-lg text-sm font-mono mb-6 border border-red-200">Error: {error}</div>
+        <button onClick={() => window.location.reload()} className="px-6 py-3 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800">Retry</button>
       </div>
     );
   }
@@ -179,6 +172,11 @@ export default function Dashboard() {
           <Logo />
         </div>
         <div className="flex items-center gap-4 md:gap-6">
+           {/* NEW: Calendar Link */}
+           <button onClick={() => navigate('/calendar')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors">
+            <Calendar size={18} /> <span className="hidden md:inline">Calendar</span>
+          </button>
+           
            <button onClick={() => navigate('/settings')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors">
             <Settings size={18} /> <span className="hidden md:inline">Settings</span>
           </button>
@@ -204,27 +202,14 @@ export default function Dashboard() {
           <div className="flex gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-               <input 
-                 type="text" 
-                 placeholder="Search..." 
-                 className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm"
-                 value={searchTerm}
-                 onChange={(e) => setSearchTerm(e.target.value)}
-               />
+               <input type="text" placeholder="Search..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-sm shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             </div>
             
-            <button 
-              onClick={handleExportCSV}
-              className="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center"
-              title="Export CSV"
-            >
+            <button onClick={handleExportCSV} className="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center" title="Export CSV">
               <Download size={20} />
             </button>
 
-            <button 
-              onClick={() => { if (clients.length >= 3) setIsUpgradeModalOpen(true); else setIsModalOpen(true); }} 
-              className="bg-slate-900 text-white px-4 md:px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap"
-            >
+            <button onClick={() => { if (clients.length >= 3) setIsUpgradeModalOpen(true); else setIsModalOpen(true); }} className="bg-slate-900 text-white px-4 md:px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap">
               <Plus size={20} /> <span className="hidden md:inline">New Client</span>
             </button>
           </div>
@@ -270,28 +255,17 @@ export default function Dashboard() {
           </div>
           
           {loading ? <div className="p-12 text-center text-slate-500">Loading...</div> : filteredClients.length === 0 ? (
-            <div className="p-16 text-center text-slate-400">
-              <Users size={48} className="mx-auto mb-4 opacity-20" />
-              <p>{searchTerm ? "No clients match your search." : "No clients found."}</p>
-            </div>
+            <div className="p-16 text-center text-slate-400"><Users size={48} className="mx-auto mb-4 opacity-20" /><p>{searchTerm ? "No clients match your search." : "No clients found."}</p></div>
           ) : (
             <div className="divide-y divide-slate-100">
               {filteredClients.map((client) => (
-                <div 
-                  key={client.id} 
-                  onClick={() => navigate(`/client/${client.id}`)}
-                  className="p-4 md:p-6 px-6 md:px-8 flex flex-col md:flex-row md:items-center justify-between hover:bg-slate-50 transition-all cursor-pointer group gap-4"
-                >
+                <div key={client.id} onClick={() => navigate(`/client/${client.id}`)} className="p-4 md:p-6 px-6 md:px-8 flex flex-col md:flex-row md:items-center justify-between hover:bg-slate-50 transition-all cursor-pointer group gap-4">
                   <div className="flex items-center gap-5">
-                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-lg">
-                      {client.name[0]}
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-900 text-lg">{client.name}</p><p className="text-sm text-slate-500">{client.email}</p>
-                    </div>
+                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-lg">{client.name[0]}</div>
+                    <div><p className="font-bold text-slate-900 text-lg">{client.name}</p><p className="text-sm text-slate-500">{client.email}</p></div>
                   </div>
                   <div className="flex items-center gap-4 justify-end">
-                    <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className={`px-4 py-1.5 rounded-full text-xs font-bold border ${client.status === 'Active Client' ? 'bg-green-100 text-green-700 border-green-200 hover:bg-green-200' : 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100'}`}>{client.status}</button>
+                    <button onClick={(e) => { e.stopPropagation(); toggleStatus(client.id, client.status); }} className={`px-4 py-1.5 rounded-full text-xs font-bold border cursor-pointer transition-all ${client.status === 'Active Client' ? 'bg-green-100 text-green-700 border-green-200 hover:bg-green-200' : 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100'}`}>{client.status}</button>
                     <button onClick={(e) => { e.stopPropagation(); generateEmail(client.name); }} className="p-2.5 text-slate-400 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all" title="AI Assistant"><Sparkles size={20} /></button>
                     <button onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="p-2.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all" title="Delete"><Trash2 size={20} /></button>
                   </div>
@@ -303,19 +277,17 @@ export default function Dashboard() {
       </div>
 
       {/* Modals */}
+      {/* ... (Keep your existing upgrade/add modals here) ... */}
       {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-5xl overflow-y-auto border border-slate-200 relative max-h-[90vh]">
             <button onClick={() => setIsUpgradeModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-white rounded-full p-2 shadow-sm z-10"><X size={24} /></button>
-
             <div className="p-8 md:p-12">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Upgrade Your Agent Platform</h2>
                 <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-contact limit. Choose a plan below to deploy unlimited agents and scale your business.</p>
               </div>
-
               <div className="grid md:grid-cols-3 gap-6 items-start">
-                {/* Free Plan */}
                 <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative opacity-60 grayscale">
                    <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
                    <div className="text-4xl font-extrabold text-slate-900 mb-6">$0<span className="text-lg text-slate-400 font-medium">/mo</span></div>
@@ -326,8 +298,6 @@ export default function Dashboard() {
                      <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Email Support</li>
                    </ul>
                 </div>
-
-                {/* Pro Plan */}
                 <div className="bg-white p-8 rounded-2xl border-4 border-teal-500 shadow-2xl relative transform md:-translate-y-4">
                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">Most Popular</div>
                    <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">Pro <Zap size={20} className="text-amber-400 fill-amber-400"/></h3>
@@ -340,8 +310,6 @@ export default function Dashboard() {
                      <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Priority Support</li>
                    </ul>
                 </div>
-
-                 {/* Agency Plan */}
                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
                     <h3 className="text-xl font-bold text-slate-900 mb-2">Agency</h3>
                     <div className="text-4xl font-extrabold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-medium">/mo</span></div>
@@ -353,7 +321,6 @@ export default function Dashboard() {
                     </ul>
                  </div>
               </div>
-              
               <div className="mt-12">
                 <button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll stick to free for now</button>
               </div>
