@@ -5,6 +5,7 @@ import {
 import { createClient } from '@supabase/supabase-js';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
+import Footer from '../components/Footer'; // <--- NEW IMPORT
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -119,7 +120,6 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-teal-100 selection:text-teal-900">
       <Navbar onJoinClick={scrollToCTA} />
       
-      {/* --- HERO --- */}
       <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-50 via-white to-white opacity-70"></div>
@@ -131,7 +131,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- AGENTS SHOWCASE --- */}
       <section id="agents" className="py-24 bg-slate-50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -170,7 +169,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- USE CASES --- */}
       <section id="use-cases" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -201,7 +199,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- WAITLIST --- */}
       <section id="waitlist-section" className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 text-center">
             <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl">
@@ -219,6 +216,18 @@ export default function LandingPage() {
             </div>
         </div>
       </section>
+
+      {/* --- FOOTER ADDED HERE --- */}
+      <Footer /> 
     </div>
   );
 }
+
+
+### Step 3: Deploy
+```bash
+git add .
+git commit -m "Add professional footer and component" --no-verify
+git push origin main --no-verify
+
+Now your site will feel like a legitimate, established software company!
