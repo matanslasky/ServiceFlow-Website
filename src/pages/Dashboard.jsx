@@ -33,9 +33,9 @@ export default function Dashboard() {
   const [newClientName, setNewClientName] = useState('');
   const [newClientEmail, setNewClientEmail] = useState('');
 
-  // --- NEW: Notification State ---
+  // Notification State
   const [showNotifications, setShowNotifications] = useState(false);
-  const [notifications, setNotifications] = useState([]); // Empty for now
+  const [notifications, setNotifications] = useState([]); 
 
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
 
@@ -77,10 +77,9 @@ export default function Dashboard() {
 
   const handleAddClient = async (e) => {
     e.preventDefault();
-    // LIMIT CHECK (3 Clients Max for Free)
     if (clients.length >= 3) { 
       setIsModalOpen(false); 
-      setIsUpgradeModalOpen(true); // Show pricing tiers
+      setIsUpgradeModalOpen(true);
       return; 
     }
 
@@ -158,7 +157,6 @@ export default function Dashboard() {
     client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // REAL DATA ONLY: If database has no follow_up dates, this list is empty.
   const upcomingTasks = clients
     .filter(c => c.next_follow_up)
     .sort((a, b) => new Date(a.next_follow_up) - new Date(b.next_follow_up))
@@ -172,15 +170,22 @@ export default function Dashboard() {
       <div className="bg-white border-b border-slate-200 border-t-4 border-t-teal-600 px-6 md:px-8 py-4 flex justify-between items-center sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-2"><Logo /></div>
         <div className="flex items-center gap-4 md:gap-6 relative">
-           <button onClick={() => navigate('/calendar')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><Calendar size={18} /> <span className="hidden md:inline">Calendar</span></button>
            
-           {/* --- NEW: Notification Bell --- */}
+           <button onClick={() => navigate('/calendar')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors">
+            <Calendar size={18} /> <span className="hidden md:inline">Calendar</span>
+           </button>
+
+           <button onClick={() => navigate('/billing')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors">
+            <CreditCard size={18} /> <span className="hidden md:inline">Billing</span>
+           </button>
+           
+           {/* Notification Bell (Restructured with text) */}
            <div className="relative">
              <button 
                onClick={() => setShowNotifications(!showNotifications)} 
                className={`text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors ${showNotifications ? 'text-teal-600' : ''}`}
              >
-               <Bell size={18} />
+               <Bell size={18} /> <span className="hidden md:inline">Notifications</span>
              </button>
              
              {/* Notification Dropdown */}
@@ -199,7 +204,6 @@ export default function Dashboard() {
                    </div>
                  ) : (
                    <div className="space-y-2">
-                     {/* Logic ready for future notifications */}
                      {notifications.map((n, i) => <div key={i}>{n}</div>)}
                    </div>
                  )}
@@ -207,10 +211,18 @@ export default function Dashboard() {
              )}
            </div>
 
-           <button onClick={() => navigate('/settings')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><Settings size={18} /> <span className="hidden md:inline">Settings</span></button>
-           <button onClick={() => navigate('/billing')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors"><CreditCard size={18} /> <span className="hidden md:inline">Billing</span></button>
-           <button onClick={handleLogout} className="text-slate-500 hover:text-red-600 flex items-center gap-2 text-xs md:text-sm font-medium transition-colors"><LogOut size={18} /> <span className="hidden md:inline">Sign Out</span></button>
-           <div className="w-9 h-9 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">{user?.email?.[0].toUpperCase() || 'U'}</div>
+           {/* Settings moved to far right next to Sign Out */}
+           <button onClick={() => navigate('/settings')} className="text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors">
+            <Settings size={18} /> <span className="hidden md:inline">Settings</span>
+           </button>
+
+           <button onClick={handleLogout} className="text-slate-500 hover:text-red-600 flex items-center gap-2 text-xs md:text-sm font-medium transition-colors">
+            <LogOut size={18} /> <span className="hidden md:inline">Sign Out</span>
+           </button>
+           
+           <div className="w-9 h-9 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
+            {user?.email?.[0].toUpperCase() || 'U'}
+           </div>
         </div>
       </div>
 
@@ -229,14 +241,13 @@ export default function Dashboard() {
             <button onClick={handleExportCSV} className="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center" title="Export CSV"><Download size={20} /></button>
             <button onClick={() => setIsAgentConfigOpen(true)} className="bg-white border border-slate-200 text-teal-600 px-4 py-3 rounded-xl font-bold hover:bg-teal-50 transition-all shadow-sm flex items-center justify-center gap-2" title="Configure Agent"><Settings size={20} /></button>
             
-            {/* Renamed Button */}
             <button onClick={() => { if (clients.length >= 3) setIsUpgradeModalOpen(true); else setIsModalOpen(true); }} className="bg-slate-900 text-white px-4 md:px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap">
               <Plus size={20} /> <span className="hidden md:inline">Add Client</span>
             </button>
           </div>
         </div>
         
-        {/* --- NEW: ANALYTICS WIDGETS (Empty States) --- */}
+        {/* --- ANALYTICS WIDGETS --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
              <div className="absolute top-3 right-3 bg-slate-100 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</div>
@@ -276,7 +287,6 @@ export default function Dashboard() {
             </div>
           </div>
           
-          {/* Upcoming Tasks */}
           <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
              <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2"><Calendar size={20} className="text-teal-600"/> Next Follow-ups</h3>
              {upcomingTasks.length === 0 ? (
@@ -328,7 +338,7 @@ export default function Dashboard() {
 
       <AgentConfigModal isOpen={isAgentConfigOpen} onClose={() => setIsAgentConfigOpen(false)} user={user} />
 
-      {/* Upgrade Modal - Full Pricing Table */}
+      {/* Upgrade Modal */}
       {isUpgradeModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-5xl overflow-y-auto border border-slate-200 relative max-h-[90vh]">
