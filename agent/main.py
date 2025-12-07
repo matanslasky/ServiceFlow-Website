@@ -15,6 +15,14 @@ async def main():
     # Main Loop
     while True:
         try:
+            # Check if email_secretary agent is active for this user
+            user_settings = db_bridge.supabase.table("agent_settings").select("active_agents").eq("user_id", Config.TARGET_USER_ID).execute()
+            
+            if not user_settings.data or "email_secretary" not in user_settings.data[0].get('active_agents', []):
+                print("Email Secretary agent not purchased or activated. Sleeping.")
+                await asyncio.sleep(Config.CHECK_INTERVAL * 60)
+                continue
+            
             # 1. INGEST: Read Gmail, AI Generate, Push to DB
             await process_emails(db_bridge)
             
