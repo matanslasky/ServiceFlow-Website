@@ -1,7 +1,32 @@
-node_modules
+# Dependencies
+node_modules/
+website/node_modules/
+
+# Environment variables
 .env
 .env.local
-dist
-dist-ssr
+.env.*.local
+
+# Build outputs
+dist/
+dist-ssr/
+website/dist/
+website/dist-ssr/
+
+# Python
+agent/.venv/
+agent/__pycache__/
+agent/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
 .DS_Store
-.vscode
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
