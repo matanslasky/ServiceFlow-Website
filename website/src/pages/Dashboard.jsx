@@ -211,6 +211,50 @@ export default function Dashboard() {
 
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">Error: {error}</div>;
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        {/* Navbar Skeleton */}
+        <div className="bg-white border-b border-slate-200 border-t-4 border-t-teal-600 px-6 md:px-8 py-4 flex justify-between items-center shadow-sm">
+          <div className="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+          <div className="flex items-center gap-4">
+            <div className="h-8 w-20 bg-slate-200 rounded animate-pulse"></div>
+            <div className="h-8 w-20 bg-slate-200 rounded animate-pulse"></div>
+            <div className="h-9 w-9 bg-slate-200 rounded-full animate-pulse"></div>
+          </div>
+        </div>
+
+        {/* Content Skeleton */}
+        <div className="p-6 md:p-10 max-w-7xl mx-auto">
+          <div className="mb-6">
+            <div className="h-8 w-64 bg-slate-200 rounded animate-pulse mb-2"></div>
+            <div className="h-4 w-48 bg-slate-200 rounded animate-pulse"></div>
+          </div>
+
+          {/* Analytics Cards Skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div className="h-6 w-32 bg-slate-200 rounded animate-pulse mb-4"></div>
+                <div className="h-10 w-20 bg-slate-200 rounded animate-pulse"></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Clients Table Skeleton */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <div className="h-8 w-40 bg-slate-200 rounded animate-pulse mb-6"></div>
+            <div className="space-y-4">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="h-16 bg-slate-100 rounded-lg animate-pulse"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 relative font-sans">
       {/* Navbar */}

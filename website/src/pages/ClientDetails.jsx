@@ -72,7 +72,44 @@ export default function ClientDetails() {
     navigate('/');
   };
 
-  if (loading) return <div className="h-screen flex items-center justify-center text-slate-500">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        {/* Navbar Skeleton */}
+        <div className="bg-white border-b border-slate-200 border-t-4 border-t-teal-600 px-4 md:px-8 py-4 flex justify-between items-center shadow-sm">
+          <div className="h-8 w-32 bg-slate-200 rounded animate-pulse"></div>
+          <div className="h-8 w-20 bg-slate-200 rounded animate-pulse"></div>
+        </div>
+
+        {/* Content Skeleton */}
+        <div className="p-4 md:p-10 max-w-5xl mx-auto">
+          <div className="h-6 w-24 bg-slate-200 rounded animate-pulse mb-6"></div>
+          
+          {/* Header Skeleton */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 mb-8">
+            <div className="flex items-center gap-5 mb-4">
+              <div className="w-20 h-20 bg-slate-200 rounded-2xl animate-pulse"></div>
+              <div className="space-y-2">
+                <div className="h-8 w-48 bg-slate-200 rounded animate-pulse"></div>
+                <div className="h-4 w-64 bg-slate-200 rounded animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Details Skeleton */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+            <div className="h-6 w-32 bg-slate-200 rounded animate-pulse mb-6"></div>
+            <div className="space-y-4">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="h-24 bg-slate-100 rounded-lg animate-pulse"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   if (!client) return <div className="h-screen flex items-center justify-center text-slate-500">Client not found.</div>;
 
   return (

@@ -25,6 +25,21 @@ function AuthListener() {
   const navigate = useNavigate();
   
   useEffect(() => {
+    // Check for existing session on mount
+    const checkSession = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      if (session && !error) {
+        // User has an active session, keep them logged in
+        const currentPath = window.location.pathname;
+        if (currentPath === '/' || currentPath === '/login') {
+          navigate('/dashboard');
+        }
+      }
+    };
+    
+    checkSession();
+
+    // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       
       if (event === 'SIGNED_IN') {
