@@ -1,0 +1,163 @@
+2025-11-20 12:07:15,489 - INFO - "GET /?state=QezROAbX7ZImFNP56QpeNPWCGRFveA&code=4/0Ab32j91q67vZr0Hbx0SZFZphYC2iu5JOPdsnrPIbgKmyYY_1mhX2g_rsZcAWAhc0jLwaqA&scope=https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 200 65
+2025-11-20 12:07:15,944 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 12:07:18,965 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 12:07:18,969 - INFO - Application started
+2025-11-20 12:07:19,065 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 12:07:19,077 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 12:07:19,081 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 12:07:38,987 - INFO - [ID:4c824ac4] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa0942d9546aad
+2025-11-20 12:07:41,962 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 12:07:41,982 - INFO - [ID:2443bd6e] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 12:07:42,338 - WARNING - Encountered 403 Forbidden with reason "insufficientPermissions"
+2025-11-20 12:12:48,939 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 12:12:49,674 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 12:12:49,675 - INFO - Application started
+2025-11-20 12:12:49,761 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 12:12:49,764 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 12:12:49,768 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 12:13:08,777 - INFO - [ID:acd9067e] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa0942d9546aad
+2025-11-20 12:13:10,740 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 12:13:10,753 - INFO - [ID:3ed55ca9] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 12:13:11,022 - WARNING - Encountered 403 Forbidden with reason "insufficientPermissions"
+2025-11-20 14:32:23,899 - INFO - "GET /?state=TyCWuUycsW1J5mVmswdzt79ZakctjL&code=4/0Ab32j91MsgvpscZpPdjkb44w_L2Y2p_4eyH1GnJx1DMDU0x5Ke31fR24mdkgUh9LY0Y1TA&scope=https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 200 65
+2025-11-20 14:32:24,337 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:32:24,766 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 14:32:24,767 - INFO - Application started
+2025-11-20 14:32:24,894 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 14:32:24,902 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:32:24,906 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:32:45,503 - INFO - [ID:04114196] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa0942d9546aad
+2025-11-20 14:32:47,355 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:32:47,365 - INFO - [ID:151cf190] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 14:32:47,643 - WARNING - Encountered 403 Forbidden with reason "insufficientPermissions"
+2025-11-20 14:34:42,941 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:34:43,477 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 14:34:43,479 - INFO - Application started
+2025-11-20 14:34:43,569 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 14:34:43,572 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:34:43,576 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:35:03,178 - INFO - [ID:b1ce42f5] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa141b32164966
+2025-11-20 14:35:04,933 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:35:04,947 - INFO - [ID:911434da] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 14:35:05,189 - WARNING - Encountered 403 Forbidden with reason "insufficientPermissions"
+2025-11-20 14:39:05,232 - INFO - "GET /?state=MtkyivYQwoITssS1c8KDBm69j3X0T5&code=4/0Ab32j93-Wb1_tBPqpRypzj89eEwjCROovbJR3bcgFgKcuySxiPE7J7NOjGJEuRTLL14Zmg&scope=https://www.googleapis.com/auth/calendar.readonly%20https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 200 65
+2025-11-20 14:39:05,667 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:39:06,093 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 14:39:06,094 - INFO - Application started
+2025-11-20 14:39:06,187 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 14:39:06,195 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:39:06,197 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:39:26,729 - INFO - [ID:8b23fd4c] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14382aae9ac8
+2025-11-20 14:39:28,376 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:39:28,390 - INFO - [ID:18b44b4f] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 14:39:31,038 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:39:55,586 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:39:56,096 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 14:39:56,098 - INFO - Application started
+2025-11-20 14:39:56,202 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 14:39:56,207 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:39:56,212 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:40:15,173 - INFO - [ID:58f54afc] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14382aae9ac8
+2025-11-20 14:40:16,555 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:40:16,574 - INFO - [ID:e0bd97b7] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 14:40:20,447 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:42:43,831 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:42:44,424 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-20 14:42:44,426 - INFO - Application started
+2025-11-20 14:42:44,623 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-20 14:42:44,627 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:42:44,631 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-20 14:43:02,686 - INFO - [ID:e63b1641] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14382aae9ac8
+2025-11-20 14:43:03,547 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:43:03,560 - INFO - [ID:ae5e6f5a] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-20 14:43:07,474 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:43:08,422 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-20 14:43:08,863 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 400 Bad Request"
+2025-11-23 01:04:05,503 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-23 01:04:05,913 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-23 01:04:05,914 - INFO - Application started
+2025-11-23 01:04:06,005 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-23 01:04:06,007 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-23 01:04:06,010 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-23 01:04:30,865 - INFO - [ID:1a6aebde] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14382aae9ac8
+2025-11-23 01:04:32,762 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:04:32,783 - INFO - [ID:15d6b085] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:04:36,415 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:04:37,820 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:04:38,293 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 400 Bad Request"
+2025-11-23 01:49:39,159 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-23 01:49:39,524 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getMe "HTTP/1.1 200 OK"
+2025-11-23 01:49:39,526 - INFO - Application started
+2025-11-23 01:49:39,609 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-11-23 01:49:39,613 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-23 01:49:39,616 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-11-23 01:50:04,801 - INFO - [ID:c3e771ee] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14382aae9ac8
+2025-11-23 01:50:06,408 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:06,429 - INFO - [ID:0a734203] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:08,807 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:10,246 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:10,695 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getUpdates "HTTP/1.1 200 OK"
+2025-11-23 01:50:10,714 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:10,716 - INFO - [ID:23e6d557] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14340edc76d4
+2025-11-23 01:50:11,205 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:11,222 - INFO - [ID:10571d2c] ACTION: CLASSIFIED | DETAILS: Category: medical
+2025-11-23 01:50:14,005 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:14,921 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:15,054 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:15,058 - INFO - [ID:9fc5077d] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa141b32164966
+2025-11-23 01:50:15,815 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:15,817 - INFO - [ID:949014da] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:18,279 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:19,808 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:19,968 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:19,971 - INFO - [ID:22b34b84] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa14151da2f366
+2025-11-23 01:50:20,441 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:20,444 - INFO - [ID:564276bd] ACTION: CLASSIFIED | DETAILS: Category: medical
+2025-11-23 01:50:22,951 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:24,313 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:24,320 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:24,324 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getUpdates "HTTP/1.1 200 OK"
+2025-11-23 01:50:24,480 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:24,482 - INFO - [ID:2c20876c] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa0942d9546aad
+2025-11-23 01:50:25,112 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:25,118 - INFO - [ID:5c65479b] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:27,300 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:28,537 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:28,546 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:28,690 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:28,693 - INFO - [ID:b6a1100c] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa07fe3fb1d910
+2025-11-23 01:50:29,429 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:29,436 - INFO - [ID:cb77ebe9] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:31,431 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:32,309 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:32,432 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:32,435 - INFO - [ID:6364d640] ACTION: EMAIL_FETCHED | DETAILS: ID: 19aa0246c09f641b
+2025-11-23 01:50:33,213 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:33,215 - INFO - [ID:880b69f7] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:35,008 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:35,681 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:35,688 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getUpdates "HTTP/1.1 200 OK"
+2025-11-23 01:50:35,843 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:35,846 - INFO - [ID:50cfd32a] ACTION: EMAIL_FETCHED | DETAILS: ID: 19a9e072a0e462d3
+2025-11-23 01:50:36,815 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:36,819 - INFO - [ID:53f4d93c] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:38,291 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:39,312 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:39,438 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:39,440 - INFO - [ID:5bf0d196] ACTION: EMAIL_FETCHED | DETAILS: ID: 19a9d1e61bd483b6
+2025-11-23 01:50:39,909 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:39,912 - INFO - [ID:d39c0e12] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:41,753 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:42,718 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:42,860 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:42,863 - INFO - [ID:3d3f5096] ACTION: EMAIL_FETCHED | DETAILS: ID: 19a9bf1bcbacb559
+2025-11-23 01:50:43,374 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:43,378 - INFO - [ID:4ae597a4] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:45,709 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:46,415 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:46,424 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/getUpdates "HTTP/1.1 200 OK"
+2025-11-23 01:50:46,540 - INFO - HTTP Request: POST https://api.telegram.org/bot8354557291:AAH3cuCAOk5dxbiflkm3LIeIX2uWLjelhFQ/sendMessage "HTTP/1.1 200 OK"
+2025-11-23 01:50:46,541 - INFO - [ID:d0d27863] ACTION: EMAIL_FETCHED | DETAILS: ID: 19a9bd89c1b610ab
+2025-11-23 01:50:47,080 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-11-23 01:50:47,082 - INFO - [ID:e10f8547] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-11-23 01:50:49,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
