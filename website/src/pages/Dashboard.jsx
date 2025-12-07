@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Mail, ChevronRight, Bell, Activity, Clock, BarChart3, Bot, Edit3 } from 'lucide-react';
+import { Users, LogOut, Plus, Search, X, Trash2, Sparkles, Copy, Check, CreditCard, Lock, Zap, Calendar, Download, Settings, Shield, AlertCircle, Mail, ChevronRight, Bell, Activity, Clock, BarChart3, Bot, Send, Edit3 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -21,9 +21,7 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   
-  // New State for Agent Approvals
-  const [pendingDrafts, setPendingDrafts] = useState([]);
-  
+  // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
   const [isAgentConfigOpen, setIsAgentConfigOpen] = useState(false);
@@ -36,9 +34,10 @@ export default function Dashboard() {
   const [newClientName, setNewClientName] = useState('');
   const [newClientEmail, setNewClientEmail] = useState('');
 
-  // Notification State
+  // --- NEW: Agent Queue State ---
+  const [pendingDrafts, setPendingDrafts] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
-  const [notifications, setNotifications] = useState([]); 
+  const [notifications, setNotifications] = useState([]);
 
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
 
@@ -59,27 +58,24 @@ export default function Dashboard() {
     }
   };
 
-  // NEW: Fetch Pending Drafts
+  // --- NEW: Fetch Pending Drafts from Python Agent ---
   const fetchPendingDrafts = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data, error } = await supabase
-          .from('agent_queue')
-          .select('*')
-          .eq('status', 'PENDING')
-          .eq('user_id', user.id) // Ensure only user's drafts are shown
-          .order('created_at', { ascending: false });
-          
-        if (data) {
-           setPendingDrafts(data);
-           if (data.length > 0) {
-             setNotifications(prev => [...prev, `${data.length} new draft(s) need approval`]);
-           }
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data } = await supabase
+        .from('agent_queue')
+        .select('*')
+        .eq('status', 'PENDING')
+        .order('created_at', { ascending: false });
+      
+      if (data) {
+        setPendingDrafts(data);
+        if (data.length > 0) {
+           // Add a notification if new drafts arrived
+           const newCount = data.length;
+           if (newCount > 0) setNotifications([`${newCount} email(s) waiting for approval`]);
         }
       }
-    } catch (err) {
-      console.error("Error fetching drafts:", err);
     }
   };
 
@@ -89,12 +85,8 @@ export default function Dashboard() {
         const { data: { user } } = await supabase.auth.getUser();
         setUser(user);
         if (user) {
-           await fetchClients();
-           await fetchPendingDrafts();
-           
-           // Poll for new drafts every 10s
-           const interval = setInterval(fetchPendingDrafts, 10000);
-           return () => clearInterval(interval);
+          await fetchClients();
+          await fetchPendingDrafts();
         }
       } catch (err) {
         setError(err.message);
@@ -103,30 +95,33 @@ export default function Dashboard() {
       }
     };
     init();
+
+    // Poll for new drafts every 10 seconds
+    const interval = setInterval(fetchPendingDrafts, 10000);
+    return () => clearInterval(interval);
   }, []);
 
-  // NEW: Handle Approval
-  const handleApproveDraft = async (id, draftText) => {
+  // --- NEW: Handle Draft Actions ---
+  const handleApproveDraft = async (id, finalContent) => {
+    // 1. Update status in DB so Python agent sees it
     await supabase
       .from('agent_queue')
-      .update({ status: 'APPROVED', draft_reply: draftText })
+      .update({ status: 'APPROVED', draft_reply: finalContent })
       .eq('id', id);
     
-    // Remove from UI immediately
+    // 2. Remove from UI
     setPendingDrafts(prev => prev.filter(d => d.id !== id));
-    alert("Draft approved! Agent will send it shortly.");
+    alert("Draft Approved! The agent will send it in the next cycle.");
   };
 
   const handleRejectDraft = async (id) => {
     await supabase.from('agent_queue').update({ status: 'REJECTED' }).eq('id', id);
     setPendingDrafts(prev => prev.filter(d => d.id !== id));
   };
-  
-  // Handle text edit in the draft box
+
   const handleDraftEdit = (id, newText) => {
     setPendingDrafts(prev => prev.map(d => d.id === id ? { ...d, draft_reply: newText } : d));
   };
-
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -134,12 +129,7 @@ export default function Dashboard() {
 
   const handleAddClient = async (e) => {
     e.preventDefault();
-    if (clients.length >= 3) { 
-      setIsModalOpen(false); 
-      setIsUpgradeModalOpen(true);
-      return; 
-    }
-
+    if (clients.length >= 3) { setIsModalOpen(false); setIsUpgradeModalOpen(true); return; }
     if (!newClientName) return;
 
     const { error } = await supabase.from('clients').insert([{ name: newClientName, email: newClientEmail }]);
@@ -231,37 +221,17 @@ export default function Dashboard() {
            
            {/* Notification Bell */}
            <div className="relative">
-             <button 
-               onClick={() => setShowNotifications(!showNotifications)} 
-               className={`text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors ${showNotifications ? 'text-teal-600' : ''}`}
-             >
+             <button onClick={() => setShowNotifications(!showNotifications)} className={`text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors ${showNotifications ? 'text-teal-600' : ''}`}>
                <Bell size={18} /> <span className="hidden md:inline">Notifications</span>
-               {pendingDrafts.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">{pendingDrafts.length}</span>}
+               {pendingDrafts.length > 0 && <span className="absolute -top-1 -left-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full animate-bounce">{pendingDrafts.length}</span>}
              </button>
-             
              {showNotifications && (
                <div className="absolute top-10 right-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in zoom-in duration-200">
                  <div className="flex justify-between items-center mb-3 border-b border-slate-100 pb-2">
                    <h3 className="font-bold text-slate-900 text-sm">Notifications</h3>
                    <button onClick={() => setShowNotifications(false)}><X size={14} className="text-slate-400 hover:text-slate-600"/></button>
                  </div>
-                 {pendingDrafts.length === 0 && notifications.length === 0 ? (
-                   <div className="text-center py-6 text-slate-400 text-sm italic">
-                     <div className="bg-slate-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                       <Bell size={20} className="opacity-30"/>
-                     </div>
-                     No new alerts.
-                   </div>
-                 ) : (
-                   <div className="space-y-2">
-                     {pendingDrafts.length > 0 && (
-                        <div className="p-3 bg-teal-50 border border-teal-100 rounded-lg text-sm text-teal-800">
-                           <span className="font-bold">{pendingDrafts.length} email drafts</span> waiting for your approval.
-                        </div>
-                     )}
-                     {notifications.map((n, i) => <div key={i} className="text-sm text-slate-600 border-b border-slate-50 pb-2">{n}</div>)}
-                   </div>
-                 )}
+                 {notifications.length === 0 ? <div className="text-center py-4 text-slate-400 text-sm italic">No new alerts.</div> : <div className="space-y-2">{notifications.map((n, i) => <div key={i} className="text-sm text-slate-600 border-b border-slate-50 pb-2">{n}</div>)}</div>}
                </div>
              )}
            </div>
@@ -274,6 +244,50 @@ export default function Dashboard() {
       </div>
 
       <div className="p-6 md:p-10 max-w-7xl mx-auto">
+        
+        {/* --- NEW: AGENT PENDING APPROVALS WIDGET --- */}
+        {pendingDrafts.length > 0 && (
+          <div className="bg-white p-6 rounded-2xl shadow-lg border border-teal-200 mb-10 animate-in slide-in-from-top-4 border-l-4 border-l-teal-500">
+            <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2 text-lg">
+              <Bot size={24} className="text-teal-600"/> 
+              Pending Approvals 
+              <span className="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">{pendingDrafts.length}</span>
+            </h3>
+            
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {pendingDrafts.map(draft => (
+                <div key={draft.id} className="border border-slate-200 rounded-xl p-5 bg-slate-50 hover:shadow-md transition-all flex flex-col h-full relative group">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <p className="font-bold text-sm text-slate-900">To: {draft.sender}</p>
+                      <p className="text-xs text-slate-500 truncate w-48">Sub: {draft.subject}</p>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-1 rounded">Needs Review</span>
+                  </div>
+                  
+                  <div className="bg-white border border-slate-200 rounded-lg p-3 mb-4 flex-grow">
+                    <p className="text-xs text-slate-400 mb-1 font-bold uppercase">Original Message:</p>
+                    <p className="text-xs text-slate-500 italic mb-3 line-clamp-2 border-b border-slate-100 pb-2">{draft.original_snippet}</p>
+                    
+                    <p className="text-xs text-teal-600 mb-1 font-bold uppercase flex items-center gap-1"><Sparkles size={10}/> AI Draft:</p>
+                    <textarea 
+                      className="w-full text-sm text-slate-700 bg-transparent outline-none resize-none h-24 font-medium"
+                      value={draft.draft_reply}
+                      onChange={(e) => handleDraftEdit(draft.id, e.target.value)}
+                    />
+                  </div>
+                  
+                  <div className="flex gap-2">
+                     <button onClick={() => handleRejectDraft(draft.id)} className="flex-1 py-2 text-red-500 text-xs font-bold hover:bg-red-50 rounded-lg border border-transparent hover:border-red-200 flex items-center justify-center gap-1 transition-colors"><X size={14}/> Reject</button>
+                     <button onClick={() => handleApproveDraft(draft.id, draft.draft_reply)} className="flex-1 py-2 bg-teal-600 text-white text-xs font-bold rounded-lg hover:bg-teal-700 flex items-center justify-center gap-1 transition-colors shadow-sm hover:shadow-md"><Send size={14}/> Send Now</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Dashboard Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 gap-4">
           <div>
             <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Dashboard</h1>
@@ -294,38 +308,6 @@ export default function Dashboard() {
           </div>
         </div>
         
-        {/* --- NEW: PENDING APPROVALS WIDGET --- */}
-        {pendingDrafts.length > 0 && (
-          <div className="bg-white p-6 rounded-2xl shadow-md border border-amber-200 mb-8 animate-in slide-in-from-top-4">
-            <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <Bot size={20} className="text-amber-500"/> Action Required: {pendingDrafts.length} Pending Drafts
-            </h3>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {pendingDrafts.map(draft => (
-                <div key={draft.id} className="border border-slate-200 rounded-xl p-4 bg-slate-50 hover:shadow-sm transition-all flex flex-col h-full">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-bold text-sm text-slate-700 truncate" title={draft.sender}>To: {draft.sender}</span>
-                    <span className="text-xs text-slate-400 bg-white px-2 py-0.5 rounded border">Draft</span>
-                  </div>
-                  <div className="text-xs text-slate-500 mb-2 truncate">Subject: {draft.subject}</div>
-                  
-                  <textarea 
-                    className="w-full p-3 border border-slate-200 rounded-lg text-sm mb-3 focus:ring-2 focus:ring-teal-500 outline-none flex-grow resize-none bg-white font-mono text-xs"
-                    value={draft.draft_reply}
-                    onChange={(e) => handleDraftEdit(draft.id, e.target.value)}
-                    rows={4}
-                  />
-                  
-                  <div className="flex gap-2 mt-auto">
-                     <button onClick={() => handleRejectDraft(draft.id)} className="flex-1 py-2 text-red-500 text-xs font-bold hover:bg-red-50 rounded-lg border border-transparent hover:border-red-100 flex items-center justify-center gap-1 transition-colors"><X size={14}/> Reject</button>
-                     <button onClick={() => handleApproveDraft(draft.id, draft.draft_reply)} className="flex-1 py-2 bg-teal-600 text-white text-xs font-bold rounded-lg hover:bg-teal-700 flex items-center justify-center gap-1 transition-colors shadow-sm"><Check size={14}/> Send</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* ANALYTICS WIDGETS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
@@ -425,7 +407,7 @@ export default function Dashboard() {
             <div className="p-8 md:p-12">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-extrabold text-slate-900 mb-4">Upgrade Your Agent Platform</h2>
-                <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-contact limit. Choose a plan below to scale your business.</p>
+                <p className="text-lg text-slate-500 max-w-2xl mx-auto">You've hit the 3-contact limit. Choose a plan below to deploy unlimited agents and scale your business.</p>
               </div>
               <div className="grid md:grid-cols-3 gap-6 items-start">
                 <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative opacity-60 grayscale">
@@ -452,6 +434,7 @@ export default function Dashboard() {
                     <button className="w-full py-3 rounded-xl font-bold bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 transition-all mb-8">Contact Sales</button>
                  </div>
               </div>
+              <div className="mt-12"><button onClick={() => setIsUpgradeModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-medium">No thanks, I'll stick to free for now</button></div>
             </div>
           </div>
         </div>
