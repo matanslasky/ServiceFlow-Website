@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Calendar, MessageCircle, Users, CheckCircle, ArrowRight, Menu, X, Shield, Zap, Briefcase, ChevronRight, Activity, Layout, Star, Loader2, Info, CreditCard, Mail
-} from 'lucide-react';
+  Calendar, MessageCircle, Users, CheckCircle, ArrowRight, Menu, X, Shield, Zap, Briefcase, ChevronRight, Activity, Layout, Star, Loader2, Info, CreditCard, Mail, Check
+} from 'lucide-react'; // Added 'Check' to imports
 import { createClient } from '@supabase/supabase-js';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
@@ -72,6 +72,7 @@ const Navbar = ({ onJoinClick }) => {
           <div className="hidden md:flex items-center gap-8">
             <a href="#agents" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Our Agents</a>
             <a href="#use-cases" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Solutions</a>
+            <a href="#pricing" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Pricing</a>
             <Link to="/login" className="text-sm font-medium text-slate-900 hover:text-teal-600">Sign In</Link>
             <Button variant="primary" className="py-2.5 px-5" onClick={onJoinClick}>Create Account</Button>
           </div>
@@ -79,8 +80,9 @@ const Navbar = ({ onJoinClick }) => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-4 shadow-xl flex flex-col gap-4">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-4 shadow-xl flex flex-col gap-4 animate-in slide-in-from-top-2">
             <a href="#agents" onClick={() => setIsOpen(false)} className="text-slate-600 font-medium py-2 px-2 hover:bg-slate-50 rounded block">Agents</a>
+            <a href="#pricing" onClick={() => setIsOpen(false)} className="text-slate-600 font-medium py-2 px-2 hover:bg-slate-50 rounded block">Pricing</a>
             <Link to="/login" onClick={() => setIsOpen(false)} className="text-slate-600 font-medium py-2 px-2 hover:bg-slate-50 rounded block">Sign In</Link>
             <Button variant="primary" className="w-full justify-center" onClick={() => { setIsOpen(false); onJoinClick(); }}>Create Account</Button>
         </div>
@@ -120,6 +122,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-teal-100 selection:text-teal-900">
       <Navbar onJoinClick={scrollToCTA} />
       
+      {/* --- HERO --- */}
       <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-50 via-white to-white opacity-70"></div>
@@ -131,6 +134,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* --- AGENTS SHOWCASE --- */}
       <section id="agents" className="py-24 bg-slate-50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -169,6 +173,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* --- USE CASES --- */}
       <section id="use-cases" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -199,6 +204,60 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* --- NEW: PRICING SECTION --- */}
+      <section id="pricing" className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
+            <p className="text-lg text-slate-600">Start for free, upgrade as you grow.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Starter */}
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:border-teal-200 transition-all">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
+              <div className="text-4xl font-extrabold text-slate-900 mb-6">$0<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+              <p className="text-slate-500 text-sm mb-8">Perfect for solo practitioners.</p>
+              <button onClick={scrollToCTA} className="w-full py-3 rounded-xl font-bold border-2 border-slate-200 text-slate-600 hover:border-slate-900 hover:text-slate-900 transition-all mb-8">Start Free</button>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Up to 3 Clients</li>
+                <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Basic Dashboard</li>
+                <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Email Support</li>
+              </ul>
+            </div>
+
+            {/* Pro */}
+            <div className="bg-white p-8 rounded-2xl border-4 border-teal-500 shadow-xl relative transform md:-translate-y-4">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">Most Popular</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">Pro <Zap size={20} className="text-amber-400 fill-amber-400"/></h3>
+              <div className="text-4xl font-extrabold text-slate-900 mb-6">$29<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+              <p className="text-slate-500 text-sm mb-8">For growing practices.</p>
+              <button onClick={scrollToCTA} className="w-full py-3 rounded-xl font-bold bg-teal-600 text-white hover:bg-teal-700 shadow-lg hover:shadow-teal-500/30 transition-all mb-8">Start Free Trial</button>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Unlimited Clients</li>
+                <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> AI Email Assistant</li>
+                <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Client Notes & History</li>
+                <li className="flex items-center gap-3 text-sm text-slate-900 font-medium"><Check size={18} className="text-teal-600"/> Priority Support</li>
+              </ul>
+            </div>
+
+            {/* Agency */}
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:border-teal-200 transition-all">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Agency</h3>
+              <div className="text-4xl font-extrabold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+              <p className="text-slate-500 text-sm mb-8">For teams and clinics.</p>
+              <button onClick={scrollToCTA} className="w-full py-3 rounded-xl font-bold bg-white border border-slate-200 text-slate-900 hover:bg-slate-100 transition-all mb-8">Contact Sales</button>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Everything in Pro</li>
+                <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Team Accounts</li>
+                <li className="flex items-center gap-3 text-sm text-slate-600"><Check size={18} className="text-teal-600"/> Custom Branding</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- WAITLIST --- */}
       <section id="waitlist-section" className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 text-center">
             <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl">
