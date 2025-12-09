@@ -14,6 +14,8 @@ export default function Settings() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [agentSettings, setAgentSettings] = useState(null);
+  const [gmailConnected, setGmailConnected] = useState(false);
+  const [gmailEmail, setGmailEmail] = useState('');
   const [loading, setLoading] = useState(true);
   
   const [message, setMessage] = useState('');
@@ -52,6 +54,18 @@ export default function Settings() {
             .select()
             .single();
           setAgentSettings(newSettings);
+        }
+
+        // Check if Gmail is connected
+        const { data: gmailData } = await supabase
+          .from('gmail_credentials')
+          .select('email_address, is_connected')
+          .eq('user_id', user.id)
+          .single();
+        
+        if (gmailData && gmailData.is_connected) {
+          setGmailConnected(true);
+          setGmailEmail(gmailData.email_address);
         }
       }
       setLoading(false);
@@ -102,6 +116,29 @@ export default function Settings() {
       setAgentSettings({ ...agentSettings, ...updates });
       setMessage('Agent settings saved successfully!');
       setTimeout(() => setMessage(''), 3000);
+    }
+  };
+
+  const handleConnectGmail = () => {
+    // For now, show a message that OAuth setup is needed
+    // In production, this would redirect to Gmail OAuth flow
+    setError('Gmail OAuth integration coming soon! For now, the system admin needs to configure OAuth credentials.');
+  };
+
+  const handleDisconnectGmail = async () => {
+    if (!confirm('Disconnect Gmail? This will stop the email agent.')) return;
+    
+    const { error } = await supabase
+      .from('gmail_credentials')
+      .delete()
+      .eq('user_id', user.id);
+    
+    if (!error) {
+      setGmailConnected(false);
+      setGmailEmail('');
+      setMessage('Gmail disconnected successfully');
+      // Also disable email agent
+      await handleUpdateAgentSettings({ active_agents: [] });
     }
   };
 
@@ -198,19 +235,62 @@ export default function Settings() {
         {!loading && agentSettings && (
           <SettingSection icon={Bot} title="Agent Configuration" description="Control which AI agents are active and their behavior.">
             <div className="space-y-6">
+              
+              {/* Gmail Connection Status */}
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Mail size={20} className={gmailConnected ? 'text-green-600' : 'text-slate-400'} />
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">Gmail Account</p>
+                      <p className="text-xs text-slate-500">
+                        {gmailConnected ? `Connected: ${gmailEmail}` : 'Not connected'}
+                      </p>
+                    </div>
+                  </div>
+                  {gmailConnected ? (
+                    <button
+                      onClick={handleDisconnectGmail}
+                      className="px-4 py-2 text-xs font-bold text-red-600 border border-red-200 rounded-lg hover:bg-red-50 transition-colors"
+                    >
+                      Disconnect
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleConnectGmail}
+                      className="px-4 py-2 text-xs font-bold text-white bg-teal-600 rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2"
+                    >
+                      <Mail size={14} /> Connect Gmail
+                    </button>
+                  )}
+                </div>
+                {!gmailConnected && (
+                  <div className="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-3 flex items-start gap-2">
+                    <AlertCircle size={14} className="mt-0.5" />
+                    <span>You must connect your Gmail account before activating the Email Secretary agent.</span>
+                  </div>
+                )}
+              </div>
+
               <div>
                 <label className="flex items-center justify-between mb-3">
                   <span className="text-sm font-bold text-slate-700">Email Secretary Agent</span>
                   <button
                     onClick={() => {
+                      if (!gmailConnected) {
+                        setError('Please connect your Gmail account first');
+                        setTimeout(() => setError(''), 3000);
+                        return;
+                      }
                       const newActiveAgents = agentSettings.active_agents.includes('email_secretary')
                         ? agentSettings.active_agents.filter(a => a !== 'email_secretary')
                         : [...agentSettings.active_agents, 'email_secretary'];
                       handleUpdateAgentSettings({ active_agents: newActiveAgents });
                     }}
+                    disabled={!gmailConnected}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                       agentSettings.active_agents.includes('email_secretary') ? 'bg-teal-600' : 'bg-slate-300'
-                    }`}
+                    } ${!gmailConnected ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     <span
                       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${

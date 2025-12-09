@@ -95,3 +95,27 @@ CREATE TRIGGER update_email_drafts_updated_at
   BEFORE UPDATE ON email_drafts
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();
+
+-- 8. Gmail Credentials Table (for storing OAuth tokens per user)
+CREATE TABLE IF NOT EXISTS gmail_credentials (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE UNIQUE,
+  email_address TEXT NOT NULL,
+  access_token TEXT,
+  refresh_token TEXT,
+  token_expiry TIMESTAMP WITH TIME ZONE,
+  is_connected BOOLEAN DEFAULT false,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+ALTER TABLE gmail_credentials ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can manage own gmail credentials"
+  ON gmail_credentials FOR ALL
+  USING (auth.uid() = user_id);
+
+CREATE TRIGGER update_gmail_credentials_updated_at
+  BEFORE UPDATE ON gmail_credentials
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
