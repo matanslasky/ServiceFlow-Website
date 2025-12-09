@@ -7,11 +7,11 @@ from services.privacy_service import PrivacyService
 from services.audit_log import AuditLogger
 # from services.telegram_service import TelegramBot # Removed
 
-async def process_emails(db_bridge): # Changed argument
+async def process_emails(db_bridge, user_id): # Added user_id parameter
     gmail = GmailService()
     calendar = CalendarService()
     
-    print("Checking for new emails...")
+    print(f"Checking for new emails for user {user_id}...")
     emails = gmail.get_unread_emails()
     
     for email in emails:
@@ -33,8 +33,9 @@ async def process_emails(db_bridge): # Changed argument
              draft_body = f"⚠️ UNSAFE DRAFT DETECTED:\nReasons: {safety_report['reasons']}\n\nSuggested:\n{safety_report.get('suggestion', 'N/A')}"
              AuditLogger.log_action("SAFETY_FLAG", "Draft flagged as unsafe")
 
-        # NEW: Send to Supabase instead of Telegram
+        # NEW: Send to Supabase with user_id
         db_bridge.post_draft_for_approval(
+            user_id=user_id,
             email_id=email['id'],
             sender=email['sender'],
             subject=email['subject'],
