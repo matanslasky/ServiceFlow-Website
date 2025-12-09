@@ -38,6 +38,7 @@ export default function Dashboard() {
   const [pendingDrafts, setPendingDrafts] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
 
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
 
@@ -69,11 +70,13 @@ export default function Dashboard() {
         .order('created_at', { ascending: false });
       
       if (data) {
+        const previousCount = pendingDrafts.length;
         setPendingDrafts(data);
-        if (data.length > 0) {
-           // Add a notification if new drafts arrived
-           const newCount = data.length;
-           if (newCount > 0) setNotifications([`${newCount} email(s) waiting for approval`]);
+        
+        // Only show notification if there are NEW drafts (count increased)
+        if (data.length > previousCount && data.length > 0) {
+          setNotifications([`${data.length} email(s) waiting for approval`]);
+          setHasViewedNotifications(false); // Mark as unread when new drafts arrive
         }
       }
     }
@@ -267,12 +270,13 @@ export default function Dashboard() {
            <div className="relative">
              <button onClick={() => {
                setShowNotifications(!showNotifications);
-               if (!showNotifications && notifications.length > 0) {
-                 setNotifications([]);
+               if (!showNotifications) {
+                 // Mark notifications as viewed when opening
+                 setHasViewedNotifications(true);
                }
              }} className={`text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors ${showNotifications ? 'text-teal-600' : ''}`}>
                <Bell size={18} /> <span className="hidden md:inline">Notifications</span>
-               {!showNotifications && pendingDrafts.length > 0 && <span className="absolute -top-1 -left-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full animate-bounce">{pendingDrafts.length}</span>}
+               {!hasViewedNotifications && pendingDrafts.length > 0 && <span className="absolute -top-1 -left-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full animate-bounce">{pendingDrafts.length}</span>}
              </button>
              {showNotifications && (
                <div className="absolute top-10 right-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in zoom-in duration-200">
@@ -280,7 +284,25 @@ export default function Dashboard() {
                    <h3 className="font-bold text-slate-900 text-sm">Notifications</h3>
                    <button onClick={() => setShowNotifications(false)}><X size={14} className="text-slate-400 hover:text-slate-600"/></button>
                  </div>
-                 {notifications.length === 0 ? <div className="text-center py-4 text-slate-400 text-sm italic">No new alerts.</div> : <div className="space-y-2">{notifications.map((n, i) => <div key={i} className="text-sm text-slate-600 border-b border-slate-50 pb-2">{n}</div>)}</div>}
+                 {pendingDrafts.length === 0 ? (
+                   <div className="text-center py-4 text-slate-400 text-sm italic">All caught up! No pending emails.</div>
+                 ) : (
+                   <div className="space-y-2">
+                     <div className="text-sm text-slate-600 border-b border-slate-50 pb-2">
+                       {pendingDrafts.length} email{pendingDrafts.length !== 1 ? 's' : ''} waiting for approval
+                     </div>
+                     <button 
+                       onClick={() => {
+                         setShowNotifications(false);
+                         // Scroll to pending approvals section
+                         document.getElementById('pending-approvals')?.scrollIntoView({ behavior: 'smooth' });
+                       }}
+                       className="w-full text-xs font-bold text-teal-600 hover:text-teal-700 py-2 border border-teal-200 rounded-lg hover:bg-teal-50 transition-colors"
+                     >
+                       View Pending Approvals
+                     </button>
+                   </div>
+                 )}
                </div>
              )}
            </div>
@@ -405,7 +427,7 @@ export default function Dashboard() {
 
         {/* --- AGENT PENDING APPROVALS WIDGET (at bottom) --- */}
         {pendingDrafts.length > 0 && (
-          <div className="bg-white p-6 rounded-2xl shadow-lg border border-teal-200 mt-10 animate-in slide-in-from-bottom-4 border-l-4 border-l-teal-500">
+          <div id="pending-approvals" className="bg-white p-6 rounded-2xl shadow-lg border border-teal-200 mt-10 animate-in slide-in-from-bottom-4 border-l-4 border-l-teal-500">
             <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2 text-lg">
               <Bot size={24} className="text-teal-600"/> 
               Pending Approvals 
