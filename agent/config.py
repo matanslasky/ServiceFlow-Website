@@ -11,7 +11,11 @@ class Config:
     # NEW: Supabase Config
     SUPABASE_URL = os.getenv("VITE_SUPABASE_URL") 
     SUPABASE_KEY = os.getenv("VITE_SUPABASE_SERVICE_KEY")  # Use service_role key to bypass RLS
-    TARGET_USER_ID = os.getenv("TARGET_USER_ID") # The specific user UUID this agent works for
+    TARGET_USER_ID = os.getenv("TARGET_USER_ID") # DEPRECATED: Now using multi-user approach
+    
+    # Gmail OAuth Credentials (from credentials.json)
+    GMAIL_CLIENT_ID = os.getenv("GMAIL_CLIENT_ID")  # Add this to .env
+    GMAIL_CLIENT_SECRET = os.getenv("GMAIL_CLIENT_SECRET")  # Add this to .env
 
     GOOGLE_CREDENTIALS = os.getenv("GOOGLE_CREDENTIALS_FILE", "credentials.json")
     DOCTOR_NAME = os.getenv("DOCTOR_NAME", "Dr. Elliot Benjamin")

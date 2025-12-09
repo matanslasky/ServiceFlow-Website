@@ -120,9 +120,11 @@ export default function Settings() {
   };
 
   const handleConnectGmail = () => {
-    // For now, show a message that OAuth setup is needed
-    // In production, this would redirect to Gmail OAuth flow
-    setError('Gmail OAuth integration coming soon! For now, the system admin needs to configure OAuth credentials.');
+    if (!user) return;
+    
+    // Redirect to OAuth backend
+    const oauthBackendUrl = import.meta.env.VITE_OAUTH_BACKEND_URL || 'http://localhost:5000';
+    window.location.href = `${oauthBackendUrl}/auth/gmail/connect?user_id=${user.id}`;
   };
 
   const handleDisconnectGmail = async () => {
