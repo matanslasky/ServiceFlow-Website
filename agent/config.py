@@ -10,7 +10,7 @@ class Config:
     
     # NEW: Supabase Config
     SUPABASE_URL = os.getenv("VITE_SUPABASE_URL") 
-    SUPABASE_KEY = os.getenv("VITE_SUPABASE_ANON_KEY") 
+    SUPABASE_KEY = os.getenv("VITE_SUPABASE_SERVICE_KEY")  # Use service_role key to bypass RLS
     TARGET_USER_ID = os.getenv("TARGET_USER_ID") # The specific user UUID this agent works for
 
     GOOGLE_CREDENTIALS = os.getenv("GOOGLE_CREDENTIALS_FILE", "credentials.json")

@@ -12,23 +12,23 @@ class SupabaseService:
             "email_id": email_id,
             "sender": sender,
             "subject": subject,
-            "original_snippet": original_snippet,
+            "body": original_snippet,
             "draft_reply": draft_text,
-            "status": "PENDING",
-            "type": "email_reply"
+            "status": "pending"
         }
         try:
-            self.supabase.table("agent_queue").insert(data).execute()
-            print(f"Draft for {sender} pushed to Supabase queue.")
+            response = self.supabase.table("email_drafts").insert(data).execute()
+            print(f"✅ Draft for {sender} pushed to Supabase email_drafts table.")
+            print(f"DEBUG: Insert response: {response}")
         except Exception as e:
-            print(f"Error pushing to Supabase: {e}")
+            print(f"❌ Error pushing to Supabase: {e}")
 
     def get_approved_tasks(self):
         """Fetches tasks the user approved in the website"""
         try:
-            response = self.supabase.table("agent_queue").select("*")\
+            response = self.supabase.table("email_drafts").select("*")\
                 .eq("user_id", Config.TARGET_USER_ID)\
-                .eq("status", "APPROVED")\
+                .eq("status", "approved")\
                 .execute()
             return response.data
         except Exception as e:
@@ -37,4 +37,4 @@ class SupabaseService:
 
     def mark_as_complete(self, row_id):
         """Marks task as done so it doesn't get sent twice"""
-        self.supabase.table("agent_queue").update({"status": "COMPLETED"}).eq("id", row_id).execute()
+        self.supabase.table("email_drafts").update({"status": "sent"}).eq("id", row_id).execute()

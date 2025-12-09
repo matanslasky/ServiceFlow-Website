@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS email_drafts (
   draft_reply TEXT,
   status TEXT DEFAULT 'pending',
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   sent_at TIMESTAMP WITH TIME ZONE
 );
 
@@ -87,5 +88,10 @@ CREATE TRIGGER update_agent_settings_updated_at
 
 CREATE TRIGGER update_clients_updated_at
   BEFORE UPDATE ON clients
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_email_drafts_updated_at
+  BEFORE UPDATE ON email_drafts
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();

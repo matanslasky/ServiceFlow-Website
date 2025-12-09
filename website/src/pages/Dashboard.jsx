@@ -63,9 +63,9 @@ export default function Dashboard() {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
       const { data } = await supabase
-        .from('agent_queue')
+        .from('email_drafts')
         .select('*')
-        .eq('status', 'PENDING')
+        .eq('status', 'pending')
         .order('created_at', { ascending: false });
       
       if (data) {
@@ -105,8 +105,8 @@ export default function Dashboard() {
   const handleApproveDraft = async (id, finalContent) => {
     // 1. Update status in DB so Python agent sees it
     await supabase
-      .from('agent_queue')
-      .update({ status: 'APPROVED', draft_reply: finalContent })
+      .from('email_drafts')
+      .update({ status: 'approved', draft_reply: finalContent })
       .eq('id', id);
     
     // 2. Remove from UI
@@ -115,7 +115,7 @@ export default function Dashboard() {
   };
 
   const handleRejectDraft = async (id) => {
-    await supabase.from('agent_queue').update({ status: 'REJECTED' }).eq('id', id);
+    await supabase.from('email_drafts').update({ status: 'rejected' }).eq('id', id);
     setPendingDrafts(prev => prev.filter(d => d.id !== id));
   };
 
@@ -298,32 +298,40 @@ export default function Dashboard() {
               <span className="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">{pendingDrafts.length}</span>
             </h3>
             
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="space-y-4">
               {pendingDrafts.map(draft => (
-                <div key={draft.id} className="border border-slate-200 rounded-xl p-5 bg-slate-50 hover:shadow-md transition-all flex flex-col h-full relative group">
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <p className="font-bold text-sm text-slate-900">To: {draft.sender}</p>
-                      <p className="text-xs text-slate-500 truncate w-48">Sub: {draft.subject}</p>
+                <div key={draft.id} className="border border-slate-200 rounded-xl p-5 bg-slate-50 hover:shadow-md transition-all relative group">
+                  <div className="flex flex-col lg:flex-row gap-4">
+                    {/* Left: Email Info */}
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-3">
+                        <div className="flex-1">
+                          <p className="font-bold text-sm text-slate-900">To: {draft.sender}</p>
+                          <p className="text-xs text-slate-500 mt-1">Subject: {draft.subject || '(No Subject)'}</p>
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-1 rounded ml-2">Needs Review</span>
+                      </div>
+                      
+                      <div className="bg-white border border-slate-200 rounded-lg p-3 mb-3">
+                        <p className="text-xs text-slate-400 mb-1 font-bold uppercase">Original Message:</p>
+                        <p className="text-sm text-slate-600 italic">{draft.body || draft.original_snippet}</p>
+                      </div>
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 px-2 py-1 rounded">Needs Review</span>
-                  </div>
-                  
-                  <div className="bg-white border border-slate-200 rounded-lg p-3 mb-4 flex-grow">
-                    <p className="text-xs text-slate-400 mb-1 font-bold uppercase">Original Message:</p>
-                    <p className="text-xs text-slate-500 italic mb-3 line-clamp-2 border-b border-slate-100 pb-2">{draft.original_snippet}</p>
                     
-                    <p className="text-xs text-teal-600 mb-1 font-bold uppercase flex items-center gap-1"><Sparkles size={10}/> AI Draft:</p>
-                    <textarea 
-                      className="w-full text-sm text-slate-700 bg-transparent outline-none resize-none h-24 font-medium"
-                      value={draft.draft_reply}
-                      onChange={(e) => handleDraftEdit(draft.id, e.target.value)}
-                    />
-                  </div>
-                  
-                  <div className="flex gap-2">
-                     <button onClick={() => handleRejectDraft(draft.id)} className="flex-1 py-2 text-red-500 text-xs font-bold hover:bg-red-50 rounded-lg border border-transparent hover:border-red-200 flex items-center justify-center gap-1 transition-colors"><X size={14}/> Reject</button>
-                     <button onClick={() => handleApproveDraft(draft.id, draft.draft_reply)} className="flex-1 py-2 bg-teal-600 text-white text-xs font-bold rounded-lg hover:bg-teal-700 flex items-center justify-center gap-1 transition-colors shadow-sm hover:shadow-md"><Send size={14}/> Send Now</button>
+                    {/* Right: Draft Reply */}
+                    <div className="flex-1 lg:border-l lg:border-slate-200 lg:pl-4">
+                      <p className="text-xs text-teal-600 mb-2 font-bold uppercase flex items-center gap-1"><Sparkles size={12}/> AI Generated Draft:</p>
+                      <textarea 
+                        className="w-full text-sm text-slate-700 bg-white border border-slate-200 rounded-lg p-3 outline-none resize-none h-32 font-medium focus:ring-2 focus:ring-teal-500"
+                        value={draft.draft_reply}
+                        onChange={(e) => handleDraftEdit(draft.id, e.target.value)}
+                      />
+                      
+                      <div className="flex gap-2 mt-3">
+                        <button onClick={() => handleRejectDraft(draft.id)} className="flex-1 py-2 text-red-500 text-xs font-bold hover:bg-red-50 rounded-lg border border-transparent hover:border-red-200 flex items-center justify-center gap-1 transition-colors"><X size={14}/> Reject</button>
+                        <button onClick={() => handleApproveDraft(draft.id, draft.draft_reply)} className="flex-1 py-2 bg-teal-600 text-white text-xs font-bold rounded-lg hover:bg-teal-700 flex items-center justify-center gap-1 transition-colors shadow-sm hover:shadow-md"><Send size={14}/> Approve & Send</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}

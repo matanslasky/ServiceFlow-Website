@@ -161,3 +161,835 @@
 2025-11-23 01:50:47,080 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-11-23 01:50:47,082 - INFO - [ID:e10f8547] ACTION: CLASSIFIED | DETAILS: Category: non-medical
 2025-11-23 01:50:49,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:14:44,429 - INFO - "GET /?state=tCcarx7cqO2Rei61GFXtzyw4DYmHiA&code=4/0ATX87lNaUX7tf1VJRmlPqUBKtIbCjiBo6fVdv3Zj1gEN3goH2yMFfjqWo5wpG0jhBG_Dew&scope=https://www.googleapis.com/auth/calendar.readonly%20https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 200 65
+2025-12-07 09:14:44,839 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:14:45,451 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:18:46,231 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:18:46,549 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:27:55,873 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:27:56,274 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:32:56,765 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:37:57,051 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:38:22,226 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:38:22,502 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:42:57,391 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:43:22,877 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:47:57,769 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:48:23,240 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:52:58,097 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:53:23,570 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:55:55,077 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:55:55,439 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:55:55,445 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:55:55,450 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:55:56,023 - INFO - [ID:39e70fcd] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 09:55:58,627 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:55:58,640 - INFO - [ID:10a38483] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 09:56:06,238 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:56:07,197 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:56:07,521 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 09:56:07,720 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 09:57:58,454 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:58:23,891 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:59:21,304 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:59:21,592 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 09:59:21,594 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:59:21,595 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 09:59:22,100 - INFO - [ID:4b9b0906] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 09:59:22,981 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:59:22,997 - INFO - [ID:f94e6fed] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 09:59:25,806 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:59:27,380 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 09:59:27,694 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/email_drafts "HTTP/2 201 Created"
+2025-12-07 09:59:27,892 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/email_drafts?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.approved "HTTP/2 200 OK"
+2025-12-07 10:01:08,112 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:01:08,121 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:01:08,127 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:01:08,537 - INFO - [ID:86566505] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:01:12,496 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:01:12,502 - INFO - [ID:f1fbacf9] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:01:15,251 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:01:16,758 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:01:17,122 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:01:17,339 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:02:58,764 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:03:24,215 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:06:17,817 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:06:17,836 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:06:17,842 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:06:18,415 - INFO - [ID:fe86154b] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:06:19,603 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:06:19,607 - INFO - [ID:f86db2a5] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:06:22,155 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:06:23,031 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:06:23,388 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:06:23,590 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:07:59,104 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:08:24,619 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:11:24,109 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:11:24,556 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:11:24,561 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:11:24,989 - INFO - [ID:8480641a] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:11:25,512 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:11:25,517 - INFO - [ID:3a04b5c8] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:11:27,744 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:11:29,199 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:11:29,768 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:11:30,050 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:12:59,423 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:13:25,092 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:16:30,540 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:16:30,550 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:16:30,556 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:16:31,054 - INFO - [ID:abf767de] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:16:31,921 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:16:31,925 - INFO - [ID:5b960faf] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:16:34,080 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:16:34,978 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:16:35,219 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:16:35,439 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:17:59,777 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:18:25,441 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:21:35,988 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:21:36,001 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:21:36,004 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:21:36,440 - INFO - [ID:c98da4fd] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:21:37,215 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:21:37,221 - INFO - [ID:19976491] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:21:39,912 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:21:40,794 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:21:41,026 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:21:41,280 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:23:00,287 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:23:25,782 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:26:41,837 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:26:41,846 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:26:41,850 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:26:42,304 - INFO - [ID:b12edf25] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:26:42,990 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:26:42,994 - INFO - [ID:c7e81dee] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:26:46,093 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:26:47,080 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:26:47,498 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:26:47,711 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:28:00,651 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:28:26,333 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:31:48,100 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:31:48,108 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:31:48,114 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:31:48,575 - INFO - [ID:ec798327] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:31:51,293 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:31:51,308 - INFO - [ID:f3b5793f] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:31:53,418 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:31:54,518 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:31:54,826 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:31:55,031 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:33:00,972 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:33:26,817 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:36:55,585 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:36:55,596 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:36:55,603 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 10:36:56,158 - INFO - [ID:620c6773] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 10:36:56,934 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:36:56,944 - INFO - [ID:2daa4902] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 10:36:59,908 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:37:01,065 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 10:37:01,424 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 10:37:01,622 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 10:38:01,289 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 10:38:28,139 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 11:18:25,819 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 11:18:26,274 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 11:18:26,636 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 11:18:26,649 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 11:18:27,135 - INFO - [ID:4474f872] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 11:18:28,173 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 11:18:28,180 - INFO - [ID:b61157bd] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 11:18:30,837 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 11:18:32,198 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 11:18:32,667 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 11:18:32,993 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 11:18:51,665 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 14:41:41,947 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 14:41:49,130 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 14:41:49,479 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 14:41:49,481 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 14:41:49,953 - INFO - [ID:d42f9293] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 15:21:36,392 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 17:50:26,783 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 17:50:52,739 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 19:42:33,045 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 19:42:38,578 - INFO - Retrying request to /chat/completions in 0.461286 seconds
+2025-12-07 19:42:40,168 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 19:42:40,175 - INFO - [ID:634caefb] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 19:42:43,974 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 19:42:45,595 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 19:42:46,755 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 19:42:47,107 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 19:42:57,875 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 21:48:06,283 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 21:48:18,937 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-07 21:48:19,327 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 21:48:19,331 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-07 21:48:19,723 - INFO - [ID:4e908729] ACTION: EMAIL_FETCHED | DETAILS: ID: 19af7aaaab2883ca
+2025-12-07 21:48:22,261 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 21:48:22,266 - INFO - [ID:b9327795] ACTION: CLASSIFIED | DETAILS: Category: non-medical
+2025-12-07 21:48:24,969 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 21:48:26,164 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 21:48:26,797 - INFO - HTTP Request: POST https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue "HTTP/2 201 Created"
+2025-12-07 21:48:27,129 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-07 21:48:29,610 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 00:36:52,233 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 00:51:05,608 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 00:51:05,918 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 00:51:05,920 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 00:51:06,469 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 00:51:07,779 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 03:54:08,114 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 03:54:28,717 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 03:54:29,988 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 03:54:31,391 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 03:54:31,396 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 03:54:31,882 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 07:22:22,518 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 07:23:04,205 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 07:39:31,673 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 07:39:32,000 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 07:39:32,002 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 07:39:32,512 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 09:43:47,420 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:44:08,780 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:44:12,909 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:44:13,252 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:44:13,257 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:44:13,894 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 09:48:47,741 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:49:09,118 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:49:14,195 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:49:14,205 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:49:14,209 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:49:14,635 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 09:53:47,964 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:54:09,531 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:54:14,944 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:54:14,955 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:54:14,960 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:54:15,445 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 09:58:48,262 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:59:09,770 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:59:15,860 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 09:59:15,877 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:59:15,888 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 09:59:16,381 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:03:48,706 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:04:10,027 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:04:16,783 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:04:16,794 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:04:16,797 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:04:17,456 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:08:48,963 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:09:10,270 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:09:17,869 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:09:17,876 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:09:17,880 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:09:18,308 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:13:49,210 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:14:10,532 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:14:18,637 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:14:18,646 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:14:18,652 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:14:19,092 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:18:49,447 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:19:11,049 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:19:19,496 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:19:19,521 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:19:19,528 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:19:20,023 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:23:49,799 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:24:11,321 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:24:20,445 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:24:20,454 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:24:20,459 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:24:20,936 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:28:50,042 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:29:11,563 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:29:21,302 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:29:21,307 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:29:21,310 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:29:21,731 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:33:50,521 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:34:11,846 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:34:22,118 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:34:22,128 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:34:22,133 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:34:22,614 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:38:50,799 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:39:12,109 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:39:23,007 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:39:23,016 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:39:23,033 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:39:23,470 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:43:51,045 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:44:12,495 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:44:23,815 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:44:24,210 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:44:24,213 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:44:24,824 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:48:51,306 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:49:12,747 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:49:25,222 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:49:25,230 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:49:25,236 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:49:25,672 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:53:51,660 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:54:13,063 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:54:26,046 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:54:26,056 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:54:26,061 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:54:26,504 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 10:58:52,058 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:59:13,398 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:59:26,852 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 10:59:26,859 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:59:26,865 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 10:59:27,274 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:03:52,356 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:04:13,820 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:04:27,722 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:04:27,732 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:04:27,738 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:04:28,203 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:08:52,776 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:09:14,088 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:09:28,559 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:09:28,578 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:09:28,581 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:09:29,035 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:13:53,185 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:14:14,433 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:14:29,454 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:14:29,463 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:14:29,478 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:14:29,978 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:18:53,432 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:19:14,669 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:19:30,286 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:19:30,295 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:19:30,307 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:19:30,756 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:23:53,893 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:24:15,104 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:24:31,124 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:24:31,141 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:24:31,147 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:24:31,610 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:28:54,196 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:29:15,536 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:29:31,950 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:29:31,964 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:29:31,973 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:29:32,439 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:33:54,467 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:34:16,007 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:34:32,778 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:34:32,788 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:34:32,793 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:34:33,230 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:38:54,765 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:39:16,310 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:39:33,604 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:39:33,613 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:39:33,619 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:39:34,047 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:43:55,022 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:44:16,656 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:44:34,379 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:44:34,721 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:44:34,726 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:44:35,244 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:48:55,272 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:49:16,918 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:49:35,604 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:49:35,612 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:49:35,623 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:49:36,089 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:53:55,544 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:54:17,048 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:54:36,428 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:54:36,436 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:54:36,441 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:54:36,889 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 11:58:55,786 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:59:17,463 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:59:37,329 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 11:59:37,338 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:59:37,345 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 11:59:37,817 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:03:56,085 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:04:17,894 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:04:38,386 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:04:38,395 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:04:38,400 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:04:38,894 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:08:56,533 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:09:18,276 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:09:39,296 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:09:39,305 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:09:39,317 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:09:39,779 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:13:56,806 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:14:18,511 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:14:40,109 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:14:40,117 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:14:40,125 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:14:40,558 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:18:57,202 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:19:18,745 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:19:40,939 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:19:40,948 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:19:40,953 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:19:41,488 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:23:57,511 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:24:19,067 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:24:41,808 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:24:41,814 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:24:41,828 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:24:42,252 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:28:57,872 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:29:19,413 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:29:42,717 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:29:42,726 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:29:42,732 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:29:43,159 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:33:58,130 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:34:19,805 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:34:43,516 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:34:43,523 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:34:43,527 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:34:44,143 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:38:58,373 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:39:20,186 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:39:44,641 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:39:44,651 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:39:44,656 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:39:45,207 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:43:58,794 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:44:20,570 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:44:45,572 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:44:45,908 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:44:45,915 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:44:46,370 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:48:59,217 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:49:20,831 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:49:46,713 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:49:46,724 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:49:46,729 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:49:47,167 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:53:59,608 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:54:21,071 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:54:47,565 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:54:47,575 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:54:47,581 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:54:48,062 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 12:58:59,910 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:59:21,363 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:59:48,429 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 12:59:48,435 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:59:48,439 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 12:59:48,888 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 13:04:00,323 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:04:21,640 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:04:49,233 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:04:49,241 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:04:49,247 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:04:49,694 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 13:09:00,664 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:09:22,193 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:09:50,046 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:09:50,054 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:09:50,059 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:09:50,471 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 13:14:01,084 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:14:22,556 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:14:50,804 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:14:50,815 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:14:50,832 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:14:51,292 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 13:19:01,357 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:19:23,092 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:19:51,626 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:19:51,633 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:19:51,636 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:19:52,072 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 13:24:01,845 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:24:23,350 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:24:52,419 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:24:52,428 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:24:52,444 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:24:52,915 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 13:29:02,152 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:29:23,626 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:29:53,274 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 13:29:53,283 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:29:53,289 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 13:29:53,748 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:16:29,337 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:16:50,817 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:17:21,310 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:17:21,681 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:17:21,687 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:17:22,194 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:21:29,912 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:21:51,153 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:22:22,545 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:22:22,560 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:22:22,566 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:22:23,067 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:26:30,186 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:26:51,404 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:27:23,414 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:27:23,424 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:27:23,431 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:27:23,979 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:31:30,466 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:31:51,671 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:32:24,357 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:32:24,364 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:32:24,387 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:32:25,025 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:36:30,888 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:36:52,119 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:37:25,368 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:37:25,376 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:37:25,394 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:37:25,897 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:41:31,292 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:41:52,549 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:42:26,263 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:42:26,275 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:42:26,280 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:42:26,730 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:46:31,557 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:46:53,068 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:47:27,183 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:47:27,205 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:47:27,209 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:47:27,713 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:51:31,992 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:51:53,611 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:52:28,090 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:52:28,097 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:52:28,099 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:52:28,538 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 15:56:32,331 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:56:53,860 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:57:28,885 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 15:57:28,895 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:57:28,901 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 15:57:29,366 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:01:32,680 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:01:54,372 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:02:29,845 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:02:29,855 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:02:29,861 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:02:30,414 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:06:33,117 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:06:54,626 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:07:30,891 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:07:30,904 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:07:30,919 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:07:31,600 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:11:33,525 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:11:54,986 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:12:31,981 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:12:32,007 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:12:32,013 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:12:32,461 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:16:33,901 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:16:55,248 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:17:32,887 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:17:33,263 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:17:33,269 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:17:33,708 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:21:34,316 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:21:55,500 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:22:34,450 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:22:34,463 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:22:34,469 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:22:34,972 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:26:34,722 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:26:55,762 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:27:35,325 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:27:35,332 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:27:35,336 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:27:35,784 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:31:35,270 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:31:56,128 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:32:36,127 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:32:36,137 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:32:36,143 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:32:36,577 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:36:35,592 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:36:56,510 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:37:36,978 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:37:37,075 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:37:37,084 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:37:37,874 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:41:35,908 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:41:57,009 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:42:38,269 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:42:38,277 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:42:38,294 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:42:38,777 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:46:36,175 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:46:57,463 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:47:39,175 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:47:39,184 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:47:39,191 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:47:39,641 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:51:36,561 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:51:58,002 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:52:40,082 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:52:40,092 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:52:40,099 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:52:40,547 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 16:56:36,847 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:56:58,263 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:57:41,078 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 16:57:41,088 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:57:41,094 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 16:57:41,582 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:01:37,188 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:01:58,621 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:02:41,946 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:02:41,953 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:02:41,961 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:02:42,596 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:06:37,654 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:06:59,027 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:07:43,084 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:07:43,094 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:07:43,101 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:07:43,657 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:11:37,921 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:11:59,359 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:12:44,212 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:12:44,220 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:12:44,239 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:12:44,685 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:16:38,434 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:16:59,656 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:17:44,989 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:17:45,510 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:17:45,515 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:17:46,161 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:21:38,762 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:21:59,877 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:22:46,526 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:22:46,533 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:22:46,537 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:22:46,991 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:26:39,126 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:27:00,329 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:27:47,401 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:27:47,409 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:27:47,415 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:27:47,979 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:31:39,505 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:32:00,806 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:32:48,411 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:32:48,417 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:32:48,427 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:32:49,043 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:36:39,846 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:37:01,033 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:37:49,520 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:37:49,529 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:37:49,536 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:37:50,156 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:41:40,210 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:42:01,278 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:42:50,502 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:42:50,511 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:42:50,518 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:42:51,005 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:46:40,658 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:47:01,626 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:47:51,430 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:47:51,439 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:47:51,445 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:47:51,955 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 17:51:40,954 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:52:01,863 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:52:52,403 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 17:52:52,410 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:52:52,430 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 17:52:52,906 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:11:40,167 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:12:00,947 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:12:52,265 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:12:52,278 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:12:52,282 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:12:52,760 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:16:50,779 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:17:11,615 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:18:03,423 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:18:03,779 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:18:03,782 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:18:04,221 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:21:51,275 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:22:11,885 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:23:04,802 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:23:04,812 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:23:04,844 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:23:05,277 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:26:51,622 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:27:12,137 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:28:05,746 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:28:05,756 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:28:05,762 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:28:06,239 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:31:52,043 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:32:12,386 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:33:06,647 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:33:06,656 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:33:06,670 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:33:07,097 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:36:52,661 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:37:12,688 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:38:07,585 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:38:07,597 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:38:07,603 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:38:08,123 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:41:53,171 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:42:13,036 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:43:08,519 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:43:08,535 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:43:08,539 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:43:09,062 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:46:53,520 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:47:13,262 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:48:09,351 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:48:09,365 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:48:09,372 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:48:09,807 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:51:53,867 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:52:13,507 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:53:10,282 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:53:10,294 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:53:10,299 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:53:10,803 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 18:56:54,229 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:57:13,770 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:58:11,202 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 18:58:11,213 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:58:11,243 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 18:58:11,655 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:01:54,665 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:02:14,044 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:03:12,085 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:03:12,096 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:03:12,104 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:03:12,643 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:06:55,242 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:07:14,290 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:08:13,090 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:08:13,105 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:08:13,118 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:08:13,595 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:11:55,791 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:12:14,536 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:13:14,032 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:13:14,042 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:13:14,047 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:13:14,548 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:16:56,239 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:17:14,866 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:18:15,017 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:18:15,507 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:18:15,513 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:18:16,086 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:21:56,893 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:22:15,148 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:23:16,417 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:23:16,425 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:23:16,432 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:23:17,038 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:26:57,339 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:27:15,468 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:28:17,395 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:28:17,403 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:28:17,412 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:28:17,923 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:31:58,006 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:32:15,860 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:33:18,363 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:33:18,369 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:33:18,379 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:33:18,858 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:36:58,459 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:37:16,085 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:38:19,171 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:38:19,180 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:38:19,185 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:38:19,616 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:41:59,072 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:42:16,333 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:43:19,994 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:43:20,004 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:43:20,010 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:43:20,488 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:46:59,442 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:47:16,590 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:48:20,833 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:48:20,861 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:48:20,865 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 19:48:21,312 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 19:51:59,751 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 19:52:17,732 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 20:09:16,994 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 20:09:17,002 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 20:09:17,008 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 20:09:17,454 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-08 21:07:53,980 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 21:08:10,289 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 21:26:16,180 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-08 21:26:16,546 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 21:26:16,552 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-08 21:26:17,009 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 01:33:48,599 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 02:16:17,504 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 04:17:50,235 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 04:17:50,547 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 04:17:50,550 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 04:17:51,063 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 07:47:08,446 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:47:24,455 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:48:32,407 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:48:32,813 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 07:48:32,816 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 07:48:33,536 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 07:52:08,789 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:52:24,895 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:53:34,052 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:53:34,066 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 07:53:34,074 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 07:53:34,596 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 07:57:09,141 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:57:25,413 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:58:35,029 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 07:58:35,052 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 07:58:35,065 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 07:58:35,573 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 08:02:09,572 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 08:02:25,748 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 08:03:35,947 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 08:03:35,954 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 08:03:35,969 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 08:03:36,468 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 08:07:10,195 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 08:07:26,060 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 08:08:36,847 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 08:08:36,855 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 08:08:36,860 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 08:08:37,350 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"

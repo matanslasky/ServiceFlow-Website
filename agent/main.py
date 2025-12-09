@@ -18,6 +18,11 @@ async def main():
             # Check if email_secretary agent is active for this user
             user_settings = db_bridge.supabase.table("agent_settings").select("active_agents").eq("user_id", Config.TARGET_USER_ID).execute()
             
+            # Debug: Print what we got from database
+            print(f"DEBUG: user_settings.data = {user_settings.data}")
+            if user_settings.data:
+                print(f"DEBUG: active_agents = {user_settings.data[0].get('active_agents', [])}")
+            
             if not user_settings.data or "email_secretary" not in user_settings.data[0].get('active_agents', []):
                 print("Email Secretary agent not purchased or activated. Sleeping.")
                 await asyncio.sleep(Config.CHECK_INTERVAL * 60)

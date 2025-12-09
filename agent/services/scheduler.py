@@ -41,3 +41,6 @@ async def process_emails(db_bridge): # Changed argument
             draft_text=draft_body,
             original_snippet=email['snippet']
         )
+        
+        # Mark email as read so we don't process it again
+        gmail.mark_as_read(email['id'])

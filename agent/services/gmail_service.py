@@ -30,8 +30,16 @@ class GmailService:
         self.service = build('gmail', 'v1', credentials=self.creds)
 
     def get_unread_emails(self):
-        """Fetch unread emails from Inbox"""
-        results = self.service.users().messages().list(userId='me', labelIds=['INBOX', 'UNREAD']).execute()
+        """Fetch unread emails from Inbox (only from today)"""
+        from datetime import datetime, timedelta
+        
+        # Get today's date in format: YYYY/MM/DD
+        today = datetime.now().strftime('%Y/%m/%d')
+        
+        # Query: unread emails in inbox from today only
+        query = f'is:unread in:inbox after:{today}'
+        
+        results = self.service.users().messages().list(userId='me', q=query).execute()
         messages = results.get('messages', [])
         email_data = []
 
@@ -49,6 +57,8 @@ class GmailService:
                 'snippet': snippet,
                 'threadId': full_msg['threadId']
             })
+        
+        print(f"Found {len(email_data)} unread emails from today ({today})")
         return email_data
 
     def create_draft(self, to_email, subject, body, thread_id=None):
@@ -81,3 +91,15 @@ class GmailService:
         ).execute()
         
         return sent_msg
+
+    def mark_as_read(self, email_id):
+        """Mark an email as read"""
+        try:
+            self.service.users().messages().modify(
+                userId='me',
+                id=email_id,
+                body={'removeLabelIds': ['UNREAD']}
+            ).execute()
+            print(f"✅ Marked email {email_id} as read")
+        except Exception as e:
+            print(f"⚠️ Could not mark email as read: {e}")
