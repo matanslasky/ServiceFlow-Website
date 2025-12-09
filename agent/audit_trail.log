@@ -1157,3 +1157,13 @@
 2025-12-09 10:42:18,901 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
 2025-12-09 10:45:33,345 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
 2025-12-09 10:45:47,762 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 10:47:19,400 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 10:47:19,403 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 10:47:19,406 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 10:47:19,970 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"
+2025-12-09 10:50:33,699 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 10:50:48,186 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 10:52:20,396 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_settings?select=active_agents&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872 "HTTP/2 200 OK"
+2025-12-09 10:52:20,404 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 10:52:20,408 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-12-09 10:52:20,951 - INFO - HTTP Request: GET https://gaalciqxfspclhnbvvxd.supabase.co/rest/v1/agent_queue?select=%2A&user_id=eq.82259fcf-8909-4590-845f-4ed615f79872&status=eq.APPROVED "HTTP/2 200 OK"

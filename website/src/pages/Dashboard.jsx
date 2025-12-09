@@ -38,7 +38,7 @@ export default function Dashboard() {
   const [pendingDrafts, setPendingDrafts] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
-  const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
+  const [viewedDraftIds, setViewedDraftIds] = useState(new Set());
 
   const PAYMENT_LINK = "https://serviceflow.lemonsqueezy.com/checkout/buy/...";
 
@@ -70,13 +70,14 @@ export default function Dashboard() {
         .order('created_at', { ascending: false });
       
       if (data) {
-        const previousCount = pendingDrafts.length;
         setPendingDrafts(data);
         
-        // Only show notification if there are NEW drafts (count increased)
-        if (data.length > previousCount && data.length > 0) {
-          setNotifications([`${data.length} email(s) waiting for approval`]);
-          setHasViewedNotifications(false); // Mark as unread when new drafts arrive
+        // Check if there are any NEW drafts that haven't been viewed
+        const hasUnviewedDrafts = data.some(draft => !viewedDraftIds.has(draft.id));
+        
+        if (hasUnviewedDrafts && data.length > 0) {
+          const unviewedCount = data.filter(draft => !viewedDraftIds.has(draft.id)).length;
+          setNotifications([`${unviewedCount} new email(s) waiting for approval`]);
         }
       }
     }
@@ -112,14 +113,24 @@ export default function Dashboard() {
       .update({ status: 'approved', draft_reply: finalContent })
       .eq('id', id);
     
-    // 2. Remove from UI
+    // 2. Remove from UI and viewed set
     setPendingDrafts(prev => prev.filter(d => d.id !== id));
+    setViewedDraftIds(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(id);
+      return newSet;
+    });
     alert("Draft Approved! The agent will send it in the next cycle.");
   };
 
   const handleRejectDraft = async (id) => {
     await supabase.from('email_drafts').update({ status: 'rejected' }).eq('id', id);
     setPendingDrafts(prev => prev.filter(d => d.id !== id));
+    setViewedDraftIds(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(id);
+      return newSet;
+    });
   };
 
   const handleDraftEdit = (id, newText) => {
@@ -271,12 +282,13 @@ export default function Dashboard() {
              <button onClick={() => {
                setShowNotifications(!showNotifications);
                if (!showNotifications) {
-                 // Mark notifications as viewed when opening
-                 setHasViewedNotifications(true);
+                 // Mark all current drafts as viewed when opening
+                 const currentDraftIds = new Set(pendingDrafts.map(d => d.id));
+                 setViewedDraftIds(prev => new Set([...prev, ...currentDraftIds]));
                }
              }} className={`text-slate-500 hover:text-teal-600 text-xs md:text-sm font-bold flex items-center gap-2 transition-colors ${showNotifications ? 'text-teal-600' : ''}`}>
                <Bell size={18} /> <span className="hidden md:inline">Notifications</span>
-               {!hasViewedNotifications && pendingDrafts.length > 0 && <span className="absolute -top-1 -left-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full animate-bounce">{pendingDrafts.length}</span>}
+               {pendingDrafts.some(draft => !viewedDraftIds.has(draft.id)) && <span className="absolute -top-1 -left-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full animate-bounce">{pendingDrafts.filter(draft => !viewedDraftIds.has(draft.id)).length}</span>}
              </button>
              {showNotifications && (
                <div className="absolute top-10 right-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in zoom-in duration-200">
