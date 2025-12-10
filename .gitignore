@@ -22,6 +22,12 @@ agent/**/__pycache__/
 *.pyd
 .Python
 
+# OAuth & Secrets
+agent/token.json
+agent/credentials.json
+oauth_backend/.venv/
+oauth_backend/__pycache__/
+
 # IDE
 .vscode/
 .DS_Store
