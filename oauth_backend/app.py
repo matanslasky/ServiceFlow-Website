@@ -32,7 +32,8 @@ SCOPES = [
 
 # Use the same credentials.json from your agent folder
 CLIENT_SECRETS_FILE = os.path.join(os.path.dirname(__file__), '..', 'agent', 'credentials.json')
-REDIRECT_URI = 'http://localhost:5000/auth/gmail/callback'
+# For production, use environment variable for redirect URI
+REDIRECT_URI = os.getenv('REDIRECT_URI', 'http://localhost:5001/auth/gmail/callback')
 
 @app.route('/auth/gmail/connect', methods=['GET'])
 def gmail_connect():
@@ -49,16 +50,13 @@ def gmail_connect():
         redirect_uri=REDIRECT_URI
     )
     
-    # Generate authorization URL
+    # Generate authorization URL with user_id in state
     authorization_url, state = flow.authorization_url(
         access_type='offline',
         include_granted_scopes='true',
-        prompt='consent'  # Force consent to get refresh token
+        prompt='consent',  # Force consent to get refresh token
+        state=user_id  # Pass user_id as state
     )
-    
-    # Store state and user_id in session (in production, use Redis or database)
-    # For now, we'll pass user_id in state
-    authorization_url += f'&state={user_id}'
     
     return redirect(authorization_url)
 
@@ -136,5 +134,6 @@ def health():
 
 
 if __name__ == '__main__':
-    # Run on port 5000
-    app.run(port=5000, debug=True)
+    # Run on port from environment variable (Railway) or 5001 (local)
+    port = int(os.getenv('PORT', 5001))
+    app.run(host='0.0.0.0', port=port, debug=False)
