@@ -25,8 +25,16 @@ agent/**/__pycache__/
 # OAuth & Secrets
 agent/token.json
 agent/credentials.json
+**/credentials.json
+**/token.json
 oauth_backend/.venv/
 oauth_backend/__pycache__/
+oauth_backend/.env
+agent/.env
+website/.env
+**/.env
+**/.env.local
+**/.env.*.local
 
 # IDE
 .vscode/
