@@ -1,11 +1,11 @@
-# AI Secretary for Benjamin ENT Clinic
+# AI Assistant Agent
 
-An automated AI agent that reads Gmail, classifies medical vs. non-medical emails, drafts professional replies (using GPT-4), and sends them to Dr. Elliot Benjamin via Telegram for one-click approval.
+An automated AI agent that reads Gmail, classifies sensitive vs. general emails, drafts professional replies (using GPT-4), and sends them for approval via your preferred notification method.
 
 ## ⚡ Features
-- **Zero Medical Advice:** Automatically flags medical questions and drafts a "Doctor will review" response.
-- **Privacy Guard:** Regex and AI checks to prevent leaking internal schedules.
-- **Human-in-the-Loop:** Nothing is sent without Dr. Benjamin's click in Telegram.
+- **Smart Classification:** Automatically flags sensitive matters requiring professional review.
+- **Privacy Guard:** Regex and AI checks to prevent leaking internal schedules or sensitive information.
+- **Human-in-the-Loop:** Nothing is sent without your explicit approval.
 - **Google Calendar Aware:** Checks availability before drafting scheduling replies.
 
 ## 🛠 Setup

@@ -18,8 +18,8 @@ class Config:
     GMAIL_CLIENT_SECRET = os.getenv("GMAIL_CLIENT_SECRET")  # Add this to .env
 
     GOOGLE_CREDENTIALS = os.getenv("GOOGLE_CREDENTIALS_FILE", "credentials.json")
-    DOCTOR_NAME = os.getenv("DOCTOR_NAME", "Dr. Elliot Benjamin")
-    CLINIC_NAME = os.getenv("CLINIC_NAME", "Benjamin ENT Clinic")
+    PROFESSIONAL_NAME = os.getenv("PROFESSIONAL_NAME", "Your Name")
+    BUSINESS_NAME = os.getenv("BUSINESS_NAME", "Your Business")
     CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL_MINUTES", "5"))
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))

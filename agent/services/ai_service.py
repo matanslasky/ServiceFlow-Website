@@ -25,12 +25,21 @@ class AIService:
         return response.choices[0].message.content.strip().lower()
 
     @staticmethod
-    def generate_draft(sender, body, calendar_info="Unknown"):
+    def generate_draft(sender, body, calendar_info="Unknown", business_name=None, professional_name=None):
         system_prompt = load_prompt('draft_prompt.txt')
+        
+        # Use provided names or fall back to config defaults
+        if business_name is None:
+            business_name = Config.BUSINESS_NAME
+        if professional_name is None:
+            professional_name = Config.PROFESSIONAL_NAME
+            
         user_content = system_prompt.format(
             sender_name=sender,
             email_body=body,
-            calendar_info=calendar_info
+            calendar_info=calendar_info,
+            business_name=business_name,
+            professional_name=professional_name
         )
         
         response = client.chat.completions.create(

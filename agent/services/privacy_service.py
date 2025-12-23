@@ -6,7 +6,7 @@ class PrivacyService:
     def sanitize_text(text: str) -> str:
         """
         Redacts potential PII like ID numbers or phone formats before processing/logging.
-        Replaces names other than the Doctor's with [Redacted].
+        Replaces sensitive information with redacted placeholders.
         """
         # Redact Israeli ID format (simplistic 9 digit check)
         text = re.sub(r'\b\d{9}\b', '[ID_REDACTED]', text)

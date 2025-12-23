@@ -92,7 +92,7 @@ const Navbar = ({ onJoinClick }) => {
 };
 
 export default function LandingPage() {
-  const [activeUseCase, setActiveUseCase] = useState('physician');
+  const [activeUseCase, setActiveUseCase] = useState('consultant');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
 
